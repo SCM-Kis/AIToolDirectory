@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCM AI Tool Directory</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            overflow: hidden;
+            padding: 0 20px;
+        }
+
+        #searchBox {
+            width: 100%;
+            padding: 10px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .tool {
+            background: #fff;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .tool h3 {
+            margin-top: 0;
+            color: #1A415F;
+        }
+
+        .tool a, .tool a:visited {
+            color: #1A415F;
+            text-decoration: none;
+        }
+
+        .tool a:hover {
+            text-decoration: underline;
+        }
+
+        .tags {
+            margin-top: 10px;
+        }
+
+        .tags span {
+            display: inline-block;
+            background-color: #1A415F;
+            color: white;
+            padding: 5px;
+            margin-right: 5px;
+            border-radius: 3px;
+            font-size: 0.8em;
+        }
+
+        .website-link:before {
+            content: '\1F517'; /* Unicode character for link symbol */
+            color: #1A415F;
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+
+        .videos a {
+            display: inline-block;
+            margin-top: 5px;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .videos a:before {
+            content: '\25B6'; /* Unicode character for play button */
+            color: #1A415F;
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SCM AI Tool Directory</h1>
+
+        <input type="text" id="searchBox" placeholder="Search by name or tag...">
+
+        <div id="aiToolsList">
+            <!-- AI Tools will be listed here -->
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const aiTools = [
+                {
+                    name: "ChatGPT",
+                    definition: "ChatGPT is an AI language model developed by OpenAI, designed to generate human-like text based on input prompts. It's versatile, capable of tasks like answering questions, providing explanations, and creating content such as stories or code. Trained on diverse internet texts, ChatGPT does not have browsing capabilities or access to personal data unless shared in conversation. Continuous updates aim to enhance its performance and comprehension.",
+                    link: "https://chat.openai.com/",
+                    tags: ["ChatBot", "Writing", "Text-to-Image", "Research", "Coding"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=456d5ee9-6e32-476c-9bfd-90fb602ce19c&courseProgram=3373", courseName: "Harness the Power of AI: Turbocharge Your Skills with ChatGPT", timestamp: "0:12:15" },
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=09234cd4-7400-4a33-94d8-9b6c63679e10&courseProgram=3373", courseName: "Using GPT Builder and Exploring Prompts with Bard Gemini", timestamp: "0:48:15" }
+                    ]
+                },
+                {
+                    name: "Gemini",
+                    definition: "Bard now Gemini is a conversational AI developed by Google, focusing on making search more intuitive and conversational. It provides natural language responses, understanding conversational queries. Unlike traditional search engines, Bard offers contextual responses and is capable of handling follow-up questions. It integrates with Google's services like YouTube and Maps, allowing access to a wide range of information. Bard uses a lighter version of LaMDA, later incorporating PaLM for visual responses and Gemini for advanced reasoning, aiming to transform user interactions with search engines.",
+                    link: "https://gemini.google.com/app",
+                    tags: ["ChatBot", "Writing", "Research"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/mastermind-bonuses/prg-efc454f6-8527-452c-bd19-d31ddd94aabb/courses-v2/course/94c8013c-a7ac-4cd9-beb9-75bad826ea79?lessonUuid=d58d6334-f374-449e-b037-1e841e41db1f&courseProgram=20960", courseName: "GOOGLE BARD (quick walk-through + powerful prompts for you to use!)⁣", timestamp: "0:00"},
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=3f5dcc5a-f67c-4b10-9699-1462ad57e3fa&courseProgram=3373", courseName: "Navigating Google Bard", timestamp: "0:08:58"},
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=09234cd4-7400-4a33-94d8-9b6c63679e10&courseProgram=3373", courseName: "Using GPT Builder and Exploring Prompts with Bard Gemini", timestamp: "0:08:38"}
+                    ]
+                },
+                {
+                    name: "POE",
+                    definition: "This is like a library for various AI chatbots, allowing users to interact with multiple bots in one place. These bots have diverse capabilities such as answering queries, generating creative texts, or roleplaying, all accessible without separate downloads or installations.",
+                    link: "https://poe.com/",
+                    tags: ["ChatBot", "Writing", "Text-to-Image", "Research"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/mastermind-bonuses/prg-efc454f6-8527-452c-bd19-d31ddd94aabb/courses-v2/course/94c8013c-a7ac-4cd9-beb9-75bad826ea79?lessonUuid=21a84198-6e2b-4bbe-a080-656e7e7a75fc&courseProgram=20960", courseName: "As Promised, Here's All My AI & Swipe Goodies from Mastermind Day, Dallas", timestamp: "01:48"},
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/b6d81c73-9f64-45a1-b601-a2c17cf071c4?lessonUuid=5856010f-2865-4fb9-98bc-58e5949eb241&courseProgram=21094", courseName: "AISS (Jan 2024) - Special Bonus Training & Laser Coaching⁣", timestamp: "1:04:56"}
+                    ]
+                },
+                {
+                    name: "QuillBot",
+                    definition: "QuillBot is an AI-powered writing aid offering a range of tools, including paraphrasing, grammar and plagiarism checks, and citation generation. Its paraphrasing tool is particularly notable for its versatility in tone, formality, and synonym replacement. QuillBot is designed for diverse users like students, bloggers, content creators, and professionals, enhancing writing clarity and fluency. It streamlines writing processes but is not a substitute for original thought and critical analysis, emphasizing the importance of ethical usage and academic integrity.",
+                    link: "https://quillbot.com/",
+                    tags: ["Grammar Check", "Plagiarism Check"],
+                    videos: []
+                },
+                {
+                    name: "Wordtune",
+                    definition: "Wordtune is an AI-driven writing assistant offering paraphrasing, clarity and concision enhancements, tonal adjustments, and grammar checks. It supports creative writing with AI prompts and idea generation. Targeting students, professionals, bloggers, and anyone aiming to improve their writing, Wordtune is versatile but requires careful review for accuracy and plagiarism concerns. It's a developing tool, ideal for refining communication across various writing tasks.",
+                    link: "https://www.wordtune.com/",
+                    tags: ["Writing", "Grammar Check", "Summaraize"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=d7976434-3eb6-4c74-bb18-8f4012cf2ca6&courseProgram=3373", courseName: "Advanced Level AI Training (ICA’s, VSL’s, Viral Ideas and More!)", timestamp: "0:08:30"},
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/e0c79159-bea7-474f-bb93-0dcad16042cd?lessonUuid=d6e3a3bb-6722-40e1-8ed1-bfbc2f72fce0&courseProgram=21094", courseName: "AISS (Nov 2023) - Special Bonus Training & Laser Coaching⁣", timestamp: "1:10:52"},
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=e2a0ba2b-2d6e-470b-96f8-78dfae6e8474&courseProgram=21094", courseName: "AISS (July 2024) - Finding Your Perfect Clients: Using AI to Grow Your Business", timestamp: "1:27:11"}
+                    ]
+                },
+                {
+                    name: "Runway ML",
+                    definition: "Runway ML is an AI-enhanced platform for creative storytelling and content creation. It features AI tools for video editing, effects, and text-to-video generation, image creation and manipulation, audio processing, and music creation. The platform also enables users to build custom AI models without coding knowledge, broadening its appeal to artists and creators. Runway ML democratizes AI in the creative sphere, offering a rich set of tools for diverse artistic applications.",
+                    link: "https://runwayml.com/",
+                    tags: ["Text-to-Video", "Text-to-Image", "Image-to-Image"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=3f5dcc5a-f67c-4b10-9699-1462ad57e3fa&courseProgram=3373", courseName: "Navigating Google Bard", timestamp: "1:23:22"},
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/c11ea254-eba4-42f1-98f0-88db25a4c986?lessonUuid=98f8fbc3-4357-43d1-bf1d-6964e3244864&courseProgram=3373", courseName: "Exploring Creative Design: Hands-On AI Tutorials and Copyright Insights with Kris Kashtanova", timestamp: "0:57:26"}
+                    ]
+                },
+                {
+                    name: "TaskMagic",
+                    definition: "TaskMagic is an AI-driven automation tool for web tasks, acting as a virtual assistant. Users record tasks, which TaskMagic's AI turns into automation scripts for repetitive actions like form filling or data entry. It requires no coding, handles various tasks, and integrates with other tools. Targeted at individuals and businesses seeking to streamline workflows, TaskMagic enhances productivity, reduces errors, and saves time. It's particularly useful for e-commerce and routine digital tasks, offering a significant boost to efficiency and job satisfaction.",
+                    link: "https://www.taskmagic.com/",
+                    tags: ["Productivity", "Automation"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=f2982246-59a3-42a9-a63c-0a46fef606b4&courseProgram=3373", courseName: "Productivity Tools & Hacks, Remote Hiring and ChatGPT Q&A", timestamp: "0:12:10"}
+                    ]
+                },
+                {
+                    name: "Vista Social",
+                    definition: "Vista Social is a comprehensive social media management platform for efficient marketing. Key features include scheduling and publishing posts across platforms, social media listening, engagement, detailed analytics, and AI-powered content suggestions. It's user-friendly, supports multiple languages, and offers collaboration tools. Ideal for small businesses, agencies, influencers, and individuals, Vista Social is an affordable solution for managing social media strategies, although it may have some limitations in AI content accuracy and advanced features.",
+                    link: "https://vistasocial.com/",
+                    tags: ["Social Media Management", "Automated Posting and Scheduling", "Analytics and Reporting"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=f2982246-59a3-42a9-a63c-0a46fef606b4&courseProgram=3373", courseName: "Productivity Tools & Hacks, Remote Hiring and ChatGPT Q&A", timestamp: "0:16:33"},
+                        { url: "https://super-connector.upcoach.com/p/mastermind-bonuses/prg-efc454f6-8527-452c-bd19-d31ddd94aabb/courses-v2/course/94c8013c-a7ac-4cd9-beb9-75bad826ea79?lessonUuid=64108018-c8f7-4cf8-b994-fb2a22e9a003&courseProgram=20960", courseName: "This the BEST social media management tool I have ever used", timestamp: "0:00"}
+                    ]
+                },
+                {
+                    name: "Veed.io",
+                    definition: "Veed.io is an accessible online video editor for various users, offering intuitive editing, templates, text branding, stock resources, effects, and screen recording. It suits content creators, educators, and businesses, providing live collaboration and video marketing tools. While user-friendly and comprehensive, its free plan has limitations and it may lack advanced professional features. Veed.io is ideal for efficient, creative video editing and collaboration, with affordable pricing and cloud-based flexibility.",
+                    link: "https://www.veed.io/",
+                    tags: ["Video Editor", "Caption", "Screen Recording"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=f2982246-59a3-42a9-a63c-0a46fef606b4&courseProgram=3373", courseName: "Productivity Tools & Hacks, Remote Hiring and ChatGPT Q&A", timestamp: "0:19:27"}
+                    ]
+                },
+                {
+                    name: "Checklist.gg",
+                    definition: "Checklist.gg is an AI-powered tool for creating and managing checklists, aimed at standardizing processes and reducing errors across various industries. It offers features like AI-generated checklists, task assignment and collaboration, real-time updates, performance tracking, and integrations with other platforms. It's designed for diverse sectors including manufacturing, healthcare, construction, IT, and customer support, enhancing operational efficiency and quality control.",
+                    link: "https://checklist.gg/",
+                    tags: ["Productivity", "Checklist"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=f2982246-59a3-42a9-a63c-0a46fef606b4&courseProgram=3373", courseName: "Productivity Tools & Hacks, Remote Hiring and ChatGPT Q&A", timestamp: "0:22:11"}
+                    ]
+                },
+                {
+                    name: "Mixo",
+                    definition: "Mixo.io is an AI-driven website builder enabling fast and easy creation of professional websites without coding skills. Users can generate a website using a brief description, with options to customize design elements. Additional features include built-in email marketing, customer feedback management, and analytics. It's particularly useful for entrepreneurs, small businesses, and content creators who need a quick, cost-effective online presence. However, it may have limitations in customization and advanced functionalities compared to traditional web development.",
+                    link: "https://www.mixo.io/",
+                    tags: ["Website Builder", "Email Marketing", "Page Analytics"],
+                    videos: [
+                    { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=f2982246-59a3-42a9-a63c-0a46fef606b4&courseProgram=3373", courseName: "Productivity Tools & Hacks, Remote Hiring and ChatGPT Q&A", timestamp: "1:15:47"},
+                    { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/4215c354-cfb8-4e81-9072-9eace54b2286?lessonUuid=65cfe478-3ce8-49d1-97fc-c34649e3ce4b&courseProgram=21094", courseName: "AISS (Dec 2023) - SCALE WITH AI-DRIVEN SYSTEMS⁣", timestamp: "1:34:56"}
+                    ]
+                },
+                {
+                    name: "ChatGPT Plugins",
+                    definition: "ChatGPT Plugins enhance ChatGPT's functionality, offering tailored responses and new features. Users can access and enable these plugins through a plugin store or manager in the ChatGPT interface. These plugins range from question-answering enhancements and creative text generation to task automation and integrations with other apps. They provide increased functionality, customization, and efficiency, though users should consider plugin availability, reliability, and compatibility.",
+                    link: "https://platform.openai.com/docs/plugins/introduction",
+                    tags: ["ChatGPT Plugins"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=6e26b1ed-70b0-4123-8ba4-6c7f20a5f6f1&courseProgram=3373", courseName: "ChatGPT Plugins, Claude.ai + Q&A", timestamp: "0:11:30"}
+                    ]
+                },
+                {
+                    name: "Claude.ai",
+                    definition: "Claude.ai, developed by Anthropic, is an AI assistant excelling in natural language generation, question answering, summarization, and conversational assistance. It focuses on safety, reliability, and advanced reasoning, adapting to context and conversation style. However, Claude's data is limited to pre-2023 events and lacks direct internet access or open-source availability. It's designed for tasks like creative writing, coding, and search assistance, with a commitment to developing helpful, honest, and harmless AI systems.",
+                    link: "https://claude.ai/",
+                    tags: ["Chatbot", "Writing", "Summarize", "Coding", "Research"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=6e26b1ed-70b0-4123-8ba4-6c7f20a5f6f1&courseProgram=3373", courseName: "ChatGPT Plugins, Claude.ai + Q&A", timestamp: "0:28:36"},
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/4215c354-cfb8-4e81-9072-9eace54b2286?lessonUuid=a4455012-4b04-4088-80f7-239075af0acb&courseProgram=21094", courseName: "AISS (Dec 2023) - TURN CONTENT INTO CASH", timestamp: "0:32:30"},
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/f9add3e6-322b-4604-9bc7-73e68182a658?lessonUuid=29021465-fae3-495e-9fb9-e09a6091ef74&courseProgram=21094", courseName: "AISS (Feb 2024) - TURN CONTENT INTO CASH", timestamp: "0:39:34"}
+                    ]
+                },
+                {
+                    name: "Midjourney",
+                    definition: "Midjourney is an AI program for generating images from text descriptions. Operating via a Discord server, it creates high-quality, artistic images in various styles. Midjourney is community-driven, allowing users to share and refine art, and it's exploring features beyond visuals, like 3D modeling. However, it requires a subscription, relies on specific text prompts, and faces ethical considerations around AI art. It's impactful for artists, designers, and creatives, offering a novel approach to visual art generation.",
+                    link: "https://www.midjourney.com/",
+                    tags: ["Text-to-Image"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/c11ea254-eba4-42f1-98f0-88db25a4c986?lessonUuid=98f8fbc3-4357-43d1-bf1d-6964e3244864&courseProgram=3373", courseName: "Exploring Creative Design: Hands-On AI Tutorials and Copyright Insights with Kris Kashtanova", timestamp: "0:34:52"},
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/4215c354-cfb8-4e81-9072-9eace54b2286?lessonUuid=65cfe478-3ce8-49d1-97fc-c34649e3ce4b&courseProgram=21094", courseName: "AISS (Dec 2023) - SCALE WITH AI-DRIVEN SYSTEMS⁣", timestamp: "0:49:57"}
+                    ]
+                },
+                {
+                    name: "Adobe Firefly",
+                    definition: "Adobe Firefly, Adobe's generative AI engine, enhances creativity in their software suite. It enables users to generate and modify content, offering text-to-image creation, generative fill, and creative recoloring, among other features. Integrated into Adobe apps, it's designed for users of all skill levels and is constantly updated. Firefly enhances creative possibilities, saves time, and makes AI-powered design accessible, but it's still evolving, and its outputs depend on user input clarity. Ethical considerations around AI-generated content also apply.",
+                    link: "https://firefly.adobe.com/",
+                    tags: ["Text-to-Image", "Image Editor"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/c11ea254-eba4-42f1-98f0-88db25a4c986?lessonUuid=98f8fbc3-4357-43d1-bf1d-6964e3244864&courseProgram=3373", courseName: "Exploring Creative Design: Hands-On AI Tutorials and Copyright Insights with Kris Kashtanova", timestamp: "0:26:42"}
+                    ]
+                },
+                {
+                    name: "Kaiber",
+                    definition: "Kaiber is an innovative AI video creation tool that transforms text prompts into unique videos and enhances existing media with AI effects and animations. It offers a range of artistic styles and customization options, making video production accessible and efficient for anyone, regardless of experience. Kaiber is ideal for creators, influencers, and businesses looking for a time-saving and cost-effective solution to bring their visual ideas to life.",
+                    link: "https://kaiber.ai/",
+                    tags: ["Text-to-Video", "Image-to-Video", "Video Editor"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/c11ea254-eba4-42f1-98f0-88db25a4c986?lessonUuid=98f8fbc3-4357-43d1-bf1d-6964e3244864&courseProgram=3373", courseName: "Exploring Creative Design: Hands-On AI Tutorials and Copyright Insights with Kris Kashtanova", timestamp: "0:45:04"}
+                    ]
+                },
+                {
+                    name: "Mubert",
+                    definition: "Mubert is a dual-function platform offering AI-generated music and a royalty-free music library. Its generative music feature creates endless, adaptable tracks based on user preferences, while the library provides a vast selection of pre-composed, royalty-free tracks for commercial use. Mubert, accessible via web and mobile apps, caters to music lovers and content creators with its innovative approach to music creation and curation, though it operates on a subscription basis with ethical considerations typical of AI technologies.",
+                    link: "https://mubert.com/",
+                    tags: ["Music Generation", "Royalty-Free Music Library"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/c11ea254-eba4-42f1-98f0-88db25a4c986?lessonUuid=98f8fbc3-4357-43d1-bf1d-6964e3244864&courseProgram=3373", courseName: "Exploring Creative Design: Hands-On AI Tutorials and Copyright Insights with Kris Kashtanova", timestamp: "0:53:30"}
+                    ]
+                },
+                {
+                    name: "Beautiful.ai",
+                    definition: "Beautiful.ai is a cloud-based presentation tool that simplifies the creation of visually appealing presentations. It features AI-assisted design for layouts and style, a variety of templates, and customization options. Key advantages include time-saving design processes, professional-looking results, and tools for collaboration and audience engagement analysis. Ideal for a wide range of users, from business professionals to students, Beautiful.ai stands out for its ease of use and design intelligence, making it a practical choice for anyone looking to create impactful presentations.",
+                    link: "https://www.beautiful.ai/",
+                    tags: ["Presentation Maker"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/c11ea254-eba4-42f1-98f0-88db25a4c986?lessonUuid=98f8fbc3-4357-43d1-bf1d-6964e3244864&courseProgram=3373", courseName: "Exploring Creative Design: Hands-On AI Tutorials and Copyright Insights with Kris Kashtanova", timestamp: "1:14:35"},
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/4215c354-cfb8-4e81-9072-9eace54b2286?lessonUuid=65cfe478-3ce8-49d1-97fc-c34649e3ce4b&courseProgram=21094", courseName: "AISS (Dec 2023) - SCALE WITH AI-DRIVEN SYSTEMS⁣", timestamp: "0:29:10"},
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/b6d81c73-9f64-45a1-b601-a2c17cf071c4?lessonUuid=5856010f-2865-4fb9-98bc-58e5949eb241&courseProgram=21094", courseName: "AISS (Jan 2024) - Special Bonus Training & Laser Coaching⁣", timestamp: "0:31:31"}
+                    ]
+                },
+                {
+                    name: "Grammarly",
+                    definition: "Grammarly is an AI-powered writing assistant offering comprehensive grammar, clarity, style, and plagiarism checks. It integrates seamlessly across platforms for real-time feedback, enhancing writing quality and confidence. Suitable for students, professionals, and content creators, Grammarly stands out for its in-depth analysis, user-friendly interface, and customization options, making it a valuable tool for anyone looking to improve their writing skills.",
+                    link: "https://www.grammarly.com/",
+                    tags: ["Grammar Check", "Plagiarism Check"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/e0c79159-bea7-474f-bb93-0dcad16042cd?lessonUuid=d6e3a3bb-6722-40e1-8ed1-bfbc2f72fce0&courseProgram=21094", courseName: "AISS (Nov 2023) - Special Bonus Training & Laser Coaching⁣", timestamp: "1:06:21"}
+                    ]
+                },
+                {
+                    name: "AgentGPT",
+                    definition: "AgentGPT, utilizing GPT technology within web browsers, acts as a personal AI assistant for various online tasks. It automates website interactions, provides real-time information, learns user preferences for personalized service, and assists creatively. This AI agent enhances productivity, saves time, and improves accessibility, particularly in repetitive web-based tasks. As an evolving technology, AgentGPT's effectiveness depends on user instructions' clarity, with continuous updates enhancing its capabilities.",
+                    link: "https://agentgpt.reworkd.ai/",
+                    tags: ["ChatBot", "Productivity", "Automation"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/mastermind-bonuses/prg-efc454f6-8527-452c-bd19-d31ddd94aabb/courses-v2/course/94c8013c-a7ac-4cd9-beb9-75bad826ea79?lessonUuid=21a84198-6e2b-4bbe-a080-656e7e7a75fc&courseProgram=20960", courseName: "As Promised, Here's All My AI & Swipe Goodies from Mastermind Day, Dallas", timestamp: "01:37"},
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/4215c354-cfb8-4e81-9072-9eace54b2286?lessonUuid=65cfe478-3ce8-49d1-97fc-c34649e3ce4b&courseProgram=21094", courseName: "AISS (Dec 2023) - SCALE WITH AI-DRIVEN SYSTEMS⁣", timestamp: "1:24:25"},
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=f7d80583-204a-46c3-aeaa-90df9fce2d9d&courseProgram=3373", courseName: "How to Create an AI Army of Workers... Dedicated To You!", timestamp: "0:49:25"}
+                    ]
+                },
+                {
+                    name: "Chord.pub",
+                    definition: "Chord.pub is a platform that offers personalized articles based on YouTube content related to your research interests. You input a topic, and it finds relevant YouTube videos, analyzes their content, and then synthesizes this information into a brief, tailored article. It saves time in research, offers diverse perspectives, and presents information in an easily digestible format. However, it relies on the quality of YouTube content and may face issues like potential bias and limited depth in summaries.",
+                    link: "https://chord.pub/",
+                    tags: ["Writing", "Research"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/mastermind-bonuses/prg-efc454f6-8527-452c-bd19-d31ddd94aabb/courses-v2/course/94c8013c-a7ac-4cd9-beb9-75bad826ea79?lessonUuid=f9e1f93a-08fd-47e8-813d-863d73705e82&courseProgram=20960", courseName: "CHORD'S research (and writing) skills are going to blow your mind!", timestamp: "0:00"}
+                    ]
+                },
+                {
+                    name: "Wonderslide",
+                    definition: "Wonderslide is an AI-driven presentation maker designed for easy and efficient creation of professional presentations. It features AI design assistance, a variety of templates, effortless customization, real-time collaboration, and presentation analytics. It stands out for its AI-powered design capabilities, offering a user-friendly alternative to traditional tools like PowerPoint. While it streamlines presentation design and enhances collaboration, some features may still be developing, and it operates on a freemium model with advanced features available for subscribers.",
+                    link: "https://wonderslide.com/",
+                    tags: ["Presentation Maker"],
+                    videos: [
+                    { url: "https://super-connector.upcoach.com/p/mastermind-bonuses/prg-efc454f6-8527-452c-bd19-d31ddd94aabb/courses-v2/course/94c8013c-a7ac-4cd9-beb9-75bad826ea79?lessonUuid=f9e1f93a-08fd-47e8-813d-863d73705e82&courseProgram=20960", courseName: "CHORD'S research (and writing) skills are going to blow your mind!", timestamp: "02:30"}
+                    ]
+                },
+                {
+                    name: "AI Social Bio",
+                    definition: "AI Social Bio is a tool that leverages AI to craft unique social media bios based on user-specified keywords and chosen influencer styles. It offers customization options, including style and content influences, and the ability to test different bio versions for optimal performance. This tool is designed to generate bios that are credible, witty, and reflect the user's personality, helping to enhance their social media presence.",
+                    link: "https://aisocialbio.com/",
+                    tags: ["Social Media Optimization"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/mastermind-bonuses/prg-efc454f6-8527-452c-bd19-d31ddd94aabb/courses-v2/course/94c8013c-a7ac-4cd9-beb9-75bad826ea79?lessonUuid=ecf47e9b-e794-4720-9be9-95a48822fd1c&courseProgram=20960", courseName: "Use AI to Create the Perfect Social Bio With This Cool Tool!", timestamp: "0:00"}
+                    ]
+                },
+                {
+                    name: "Supermemes.ai⁣",
+                    definition: "Supermemes.ai is an AI-driven meme generator offering easy and fun meme creation. It converts text into memes, has a vast library of templates, and offers customization in multiple languages. With community sharing features, it simplifies meme-making, encourages creativity, and caters to a global audience. Perfect for both meme enthusiasts and newcomers, Supermemes.ai enhances the meme-creating experience with its user-friendly interface and creative options.",
+                    link: "https://www.supermeme.ai/",
+                    tags: ["Miscellenous"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/mastermind-bonuses/prg-efc454f6-8527-452c-bd19-d31ddd94aabb/courses-v2/course/94c8013c-a7ac-4cd9-beb9-75bad826ea79?lessonUuid=0adf6ef5-a0a2-4f05-941f-cd52cf281635&courseProgram=20960", courseName: "Supermemes.ai⁣ (Ang Why We Like Memes for Marketing)", timestamp: "0:00"},
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/4215c354-cfb8-4e81-9072-9eace54b2286?lessonUuid=65cfe478-3ce8-49d1-97fc-c34649e3ce4b&courseProgram=21094", courseName: "AISS (Dec 2023) - SCALE WITH AI-DRIVEN SYSTEMS", timestamp: "0:02:52"}
+                    ]
+                },
+                {
+                    name: "Stockimg.ai",
+                    definition: "Stockimg.ai is an AI-powered platform for easy and creative visual content creation. It generates unique images from textual descriptions across various styles and categories, offering text-to-image conversion and editable designs. Ideal for content creators, marketers, and anyone needing visuals, it provides royalty-free images suitable for commercial use. This tool is user-friendly, time-saving, and cost-effective, making professional-quality design accessible to all skill levels.",
+                    link: "https://stockimg.ai/",
+                    tags: ["Text-to-Image"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/mastermind-bonuses/prg-efc454f6-8527-452c-bd19-d31ddd94aabb/courses-v2/course/94c8013c-a7ac-4cd9-beb9-75bad826ea79?lessonUuid=223ea793-672b-40b9-bf6a-16672ad21843&courseProgram=20960", courseName: "Stockimg.ai <-- This AI-Powered Stock Image Tool is Going to Blow Your Mind!⁣", timestamp: "0:00"}
+                    ]
+                },
+                {
+                    name: "Podcastle",
+                    definition: "Podcastle is a comprehensive platform for podcast creation, offering cloud-based recording, automatic transcription, intuitive editing, one-click publishing, and advanced analytics. It's designed for both new and experienced podcasters, facilitating collaboration and enhancing audio quality with AI-powered tools. Ideal for simplifying podcast production workflows, Podcastle is user-friendly and effective for solo creators or teams.",
+                    link: "https://podcastle.ai/",
+                    tags: ["Cloud-based Recording", "Transcription"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=d9f13d57-c183-4e56-b244-befee77701a1&courseProgram=3373", courseName: "AI Tools + Mega Prompts to Drive Business Growth and Efficiency", timestamp: "0:07:52"}
+                    ]
+                },
+                {
+                    name: "DimeADozen.AI",
+                    definition: "DimeADozen.AI is an AI-powered tool for market research, ideal for validating business ideas and strategizing for successful launches. It offers detailed reports on market potential, competitor analysis, and growth strategies. Key features include data-driven insights, AI analysis, pitch deck creation, and a supportive user community. Beneficial for entrepreneurs, startups, small businesses, and investors, it aids in making informed decisions, reducing risks, and attracting investors with data-backed insights.",
+                    link: "https://www.dimeadozen.ai/",
+                    tags: ["Business Ideas", "Research", "Analytics","Pitch Deck Creation"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=d9f13d57-c183-4e56-b244-befee77701a1&courseProgram=3373", courseName: "AI Tools + Mega Prompts to Drive Business Growth and Efficiency", timestamp: "0:11:47"},
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=e2a0ba2b-2d6e-470b-96f8-78dfae6e8474&courseProgram=21094", courseName: "AISS July 2024 - Finding Your Perfect Clients: Using AI to Grow Your Business", timestamp: "0:27:06"}
+                    ]
+                },
+                {
+                    name: "TubeBuddy",
+                    definition: "TubeBuddy is a comprehensive tool for YouTube creators, offering video optimization through keyword research, tag generation, and thumbnail analysis. It aids in channel management with features like video scheduling and bulk editing. Performance tracking is made easy with detailed analytics and custom reports, while community engagement is enhanced through comment management and collaboration tools. This makes TubeBuddy a versatile assistant for growing and managing YouTube channels efficiently.",
+                    link: "https://www.tubebuddy.com/",
+                    tags: ["YouTube Optimization", "YouTube Management","Analytics"],
+                    videos: [
+                    { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=d9f13d57-c183-4e56-b244-befee77701a1&courseProgram=3373", courseName: "AI Tools + Mega Prompts to Drive Business Growth and Efficiency", timestamp: "0:20:02"}
+                    ]
+                },
+                {
+                    name: "ViralKit.io",
+                    definition: "ViralKit.io is an AI-driven contest builder that simplifies the creation of engaging contests, integrating with over 60 platforms and offering 250+ entry methods. Its key features include AI-powered contest setup, viral growth tools, fraud prevention, and real-time analytics. Ideal for businesses, marketers, influencers, and individuals, ViralKit.io boosts engagement, lead generation, and social media presence, offering an accessible and time-saving solution for running successful contests.",
+                    link: "https://viralkit.io/",
+                    tags: ["Contest Creation", "Referral Program","Analytics","Lead Generation"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=d9f13d57-c183-4e56-b244-befee77701a1&courseProgram=3373", courseName: "AI Tools + Mega Prompts to Drive Business Growth and Efficiency", timestamp: "0:23:30"}
+                    ]
+                },
+                {
+                    name: "Framer X",
+                    definition: "Framer X is a design tool bridging design and development. It features visual design with drag-and-drop, interactive prototyping, React code integration, and collaborative capabilities. Beneficial for designers and developers, it facilitates seamless project handoff and efficient prototype creation. Framer X enhances design communication, user testing, and innovation in interface creation. It's suitable for designers, developers, and product managers involved in interactive experience development, offering a free trial, extensive resources, and a vibrant community for learning and inspiration.",
+                    link: "https://www.framer.com/",
+                    tags: ["Website Builder", "CMS", "SEO"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=d9f13d57-c183-4e56-b244-befee77701a1&courseProgram=3373", courseName: "AI Tools + Mega Prompts to Drive Business Growth and Efficiency", timestamp: "0:27:02"}
+                    ]
+                },
+                {
+                    name: "Hot Reach AI",
+                    definition: "Hot Reach AI streamlines and personalizes cold email campaigns for businesses. It generates customized introductions by analyzing LinkedIn profiles and automates email sending through integration with email platforms. This tool enhances efficiency in bulk outreach, potentially increasing response rates due to its personalized approach. However, users should be mindful of the quality of AI-generated content and maintain personalization beyond initial contact to foster genuine connections.",
+                    link: "https://www.hotreachai.com/",
+                    tags: ["Email Campaign", "Writing"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=d9f13d57-c183-4e56-b244-befee77701a1&courseProgram=3373", courseName: "AI Tools + Mega Prompts to Drive Business Growth and Efficiency", timestamp: "0:28:18"}
+                    ]
+                },
+                {
+                    name: "Postwise-AI",
+                    definition: "Postwise AI is a social media management tool designed for optimizing Twitter and LinkedIn content. It features AI-powered tweet writing, thread creation, and performance tracking. Ideal for content creators, brand managers, and entrepreneurs, it enhances post engagement and follower growth. Postwise AI provides time-saving content generation and analytical insights to improve social media presence and drive sales.",
+                    link: "https://postwise.ai/",
+                    tags: ["Twitter Management", "LinkedIn Management","Writing"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=d9f13d57-c183-4e56-b244-befee77701a1&courseProgram=3373", courseName: "AI Tools + Mega Prompts to Drive Business Growth and Efficiency", timestamp: "0:32:32"},
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/4215c354-cfb8-4e81-9072-9eace54b2286?lessonUuid=a6fa2a32-60e5-45b8-bb8b-7ef67e5c02e1&courseProgram=21094", courseName: "AISS (Dec 2023) - BONUS TRAINING", timestamp: "1:04:28"},
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=debbb315-29a9-41ff-a73a-b428a1bb00a2&courseProgram=21094", courseName: "AISS (July 2024) - Scaling Your Impact: AI-Powered Systems for Sustainable Growth", timestamp: "1:42:29"}
+                    ]
+                },
+                {
+                    name: "Murf.ai",
+                    definition: "Murf.ai is a text-to-speech platform offering realistic AI voiceovers for various applications like videos, e-learning, marketing, and social media. It features a wide range of AI voices, voice customization, text editing, background music, and collaborative tools. Beneficial for saving time and reaching a broader audience, Murf.ai is user-friendly and suitable for professionals seeking efficient, high-quality voiceover solutions.",
+                    link: "https://murf.ai/",
+                    tags: ["Voice Generator", "Text-to-Speech"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=d9f13d57-c183-4e56-b244-befee77701a1&courseProgram=3373", courseName: "AI Tools + Mega Prompts to Drive Business Growth and Efficiency", timestamp: "0:39:33"}
+                    ]
+                },
+                {
+                    name: "Taskade",
+                    definition: "Taskade is a multifunctional productivity and project management app for individuals and teams. It combines task management, note-taking, and collaborative tools in one platform. Features include structured lists, mind maps, Kanban boards, chat, video calls, and real-time collaboration. Taskade is versatile for various users, enhancing organization, creativity, and communication, and reducing the need for multiple separate tools. It's suitable for individuals, teams, students, remote workers, and creative professionals seeking an all-in-one solution for productivity and project management.",
+                    link: "https://www.taskade.com/",
+                    tags: ["Task Management", "Checklists","Note-taking","Productivity","ChatBot"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=d9f13d57-c183-4e56-b244-befee77701a1&courseProgram=3373", courseName: "AI Tools + Mega Prompts to Drive Business Growth and Efficiency", timestamp: "0:43:42"},
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=e2a0ba2b-2d6e-470b-96f8-78dfae6e8474&courseProgram=21094", courseName: "AISS (July 2024) - Finding Your Perfect Clients: Using AI to Grow Your Business", timestamp: "1:28:54"}
+                    ]
+                },
+                {
+                    name: "Hix Bypass",
+                    definition: "Hix Bypass AI Detection is a component of the Hix.ai platform designed to obscure the AI origin of text content. It analyzes text for AI-generated patterns, then rewrites and paraphrases it, employing synonym replacement and sentence restructuring to mimic human writing style. This process aims to make AI-generated content less detectable by AI detection algorithms.",
+                    link: "https://hix.ai/bypass-ai-detection",
+                    tags: ["AI Detection", "Plagiarism Checker"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=d9f13d57-c183-4e56-b244-befee77701a1&courseProgram=3373", courseName: "AI Tools + Mega Prompts to Drive Business Growth and Efficiency", timestamp: "0:49:07"}
+                    ]
+                },
+                {
+                    name: "aiCarousels",
+                    definition: "aiCarousels.com is an online tool for creating social media carousels easily, offering a range of templates, a drag-and-drop interface, and customization options for users without design expertise. It allows for downloading in various formats and provides analytics for paid plans, helping users save time, enhance engagement, and maintain brand consistency.",
+                    link: "https://www.aicarousels.com/",
+                    tags: ["Writing", "Social Media Management","Social Media Optimization"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=d9f13d57-c183-4e56-b244-befee77701a1&courseProgram=3373", courseName: "AI Tools + Mega Prompts to Drive Business Growth and Efficiency", timestamp: "0:52:02"}
+                    ]
+                },
+                {
+                    name: "Recast",
+                    definition: "Recast offers a novel way to consume articles. It is designed to transform the way you engage with content, especially when you are on the go, working out, or simply seeking a more convenient method to stay informed. Recast eliminates the effort of reading lengthy articles by converting them into entertaining, informative, and easy-to-understand audio conversations.",
+                    link: "https://www.letsrecast.ai/",
+                    tags: ["Summarize", "Audio Summary"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=d9f13d57-c183-4e56-b244-befee77701a1&courseProgram=3373", courseName: "AI Tools + Mega Prompts to Drive Business Growth and Efficiency", timestamp: "0:55:09"}
+                    ]
+                },
+                {
+                    name: "Audie.ai",
+                    definition: "Audie.ai was a platform for converting text into audiobooks using AI, offering various voice options and customization features. It provided automatic chapter breaks and formatting, with downloadable audiobook files.",
+                    link: "https://audie.ai/",
+                    tags: ["Text-to-Audio", "Voice Customization"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=d9f13d57-c183-4e56-b244-befee77701a1&courseProgram=3373", courseName: "AI Tools + Mega Prompts to Drive Business Growth and Efficiency", timestamp: "0:57:48"},
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/b6d81c73-9f64-45a1-b601-a2c17cf071c4?lessonUuid=a3197f5f-fb68-4673-babf-60c78784e980&courseProgram=21094", courseName: "AISS (Jan 2024) - TURN CONTENT INTO CASH", timestamp: "1:00:37"}
+                    ]
+                },
+                {
+                    name: "Voiceflow",
+                    definition: "Voiceflow is a platform for creating conversational AI experiences like chatbots and voice assistants, offering a visual drag-and-drop interface, natural language understanding, and multi-channel deployment. It's designed for teams and individuals, including designers, developers, and marketers, to build and iterate conversational interfaces without extensive coding skills. Voiceflow enhances user engagement, automates tasks, and provides valuable insights through analytics, making it a versatile tool for various applications.",
+                    link: "https://www.voiceflow.com/",
+                    tags: ["Build Agents", "Build Assistant", "Multi-channel Deployment"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/mastermind-bonuses/prg-efc454f6-8527-452c-bd19-d31ddd94aabb/courses-v2/course/28e867f3-b7c5-47a9-afc0-90730f2c4ccf?lessonUuid=1b30ff5b-2fcc-47e0-b20f-e554db87006b&courseProgram=20960", courseName: "Interactive Zoom Session for GPT Integration", timestamp: "0:15:00"}
+                    ]
+                },
+                {
+                    name: "Heroku",
+                    definition: "Heroku is a platform as a service (PaaS) ideal for developers to build, deploy, and manage web applications. It supports multiple programming languages, offers automatic deployment, built-in services, global scalability, and continuous integration. With a focus on speed, security, and developer-friendliness, Heroku suits web developers, startups, businesses, and DevOps teams, streamlining the development process and scaling with user needs.",
+                    link: "https://www.heroku.com/",
+                    tags: ["Build Web Applications", "Cloud Host", "Deploy Web Applications"],
+                    videos: [
+                    { url: "https://super-connector.upcoach.com/p/mastermind-bonuses/prg-efc454f6-8527-452c-bd19-d31ddd94aabb/courses-v2/course/28e867f3-b7c5-47a9-afc0-90730f2c4ccf?lessonUuid=1b30ff5b-2fcc-47e0-b20f-e554db87006b&courseProgram=20960", courseName: "Interactive Zoom Session for GPT Integration", timestamp: "1:24:50"}
+                    ]
+                },
+                {
+                    name: "OpenAI developer platform",
+                    definition: "The OpenAI Developer Platform provides access to various AI models and tools, enabling developers to integrate AI functionalities into applications and services. Key offerings include GPT-3 for text generation, CLIP for visual-linguistic tasks, Whisper for speech-to-text, and Jurassic-1 Jumbo for factual language understanding. It's ideal for developers, researchers, and entrepreneurs seeking to harness AI for innovative applications. The platform offers ease of integration, customization, scalability, and a supportive community. Users are encouraged to use these technologies responsibly and ethically.",
+                    link: "https://platform.openai.com/docs/overview",
+                    tags: ["Build Assistant"],
+                    videos: [
+                    { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=09234cd4-7400-4a33-94d8-9b6c63679e10&courseProgram=3373", courseName: "Using GPT Builder and Exploring Prompts with Bard Gemini", timestamp: "0:48:15"},
+                    { url: "https://super-connector.upcoach.com/p/mastermind-bonuses/prg-efc454f6-8527-452c-bd19-d31ddd94aabb/courses-v2/course/28e867f3-b7c5-47a9-afc0-90730f2c4ccf?lessonUuid=1b30ff5b-2fcc-47e0-b20f-e554db87006b&courseProgram=20960", courseName: "Interactive Zoom Session for GPT Integration", timestamp: "0:28:57"}
+                    ]
+                },
+                {
+                    name: "Cockatoo",
+                    definition: "Cockatoo elevates the transcription experience by offering lightning-fast conversion of audio and video to text across over 90 languages, ensuring inclusivity and accessibility. Its precision in capturing nuances and dialects makes it a powerful tool for content creators, researchers, and professionals alike. Additionally, the platform's intuitive design and seamless integration capabilities make it a standout choice for those seeking efficient and accurate transcription solutions.",
+                    link: "https://www.cockatoo.com/",
+                    tags: ["Transcription", "Speech-to-Text", "Grammar Check"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/4215c354-cfb8-4e81-9072-9eace54b2286?lessonUuid=4cb6723c-1466-409c-a9c9-4267e3ec9626&courseProgram=21094", courseName: "AISS (Dec 2023) - BECOME THE GO-TO AUTHORITY⁣", timestamp: "1:09:21"}
+                    ]
+                },
+                {
+                    name: "Glasp: YouTube Summary with ChatGPT & Claude",
+                    definition: "The YouTube Summary with ChatGPT & Claude browser extension is designed to enhance learning and productivity by generating concise, informative summaries of YouTube videos, allowing users to quickly grasp key points without watching the entire content. It supports customization of summary length, includes timestamps for easy navigation, and provides the option to access and edit full video transcripts, catering to a diverse range of user preferences and needs. This tool is particularly beneficial for educational purposes, offering summaries and transcripts in multiple languages to accommodate a global audience.",
+                    link: "https://glasp.co/youtube-summary",
+                    tags: ["Summarize"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/4215c354-cfb8-4e81-9072-9eace54b2286?lessonUuid=4cb6723c-1466-409c-a9c9-4267e3ec9626&courseProgram=21094", courseName: "AISS (Dec 2023) - BECOME THE GO-TO AUTHORITY⁣", timestamp: "1:14:29"}
+                    ]
+                },
+                {
+                    name: "Rask.ai",
+                    definition: "Rask.ai revolutionizes video localization and dubbing, offering seamless translation into over 130 languages with features like VoiceClone for authentic voice replication across 28 languages. It stands out with its capacity to handle multi-speaker videos, ensuring accurate voice differentiation and synchronization, making it a highly versatile tool for global content creators seeking efficient, cost-effective localization solutions.",
+                    link: "https://www.rask.ai/",
+                    tags: ["Transcription", "Subtitles", "Video Translation", "Video Editing", "Voice Cloning"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/4215c354-cfb8-4e81-9072-9eace54b2286?lessonUuid=65cfe478-3ce8-49d1-97fc-c34649e3ce4b&courseProgram=21094", courseName: "AISS (Dec 2023) - SCALE WITH AI-DRIVEN SYSTEMS⁣", timestamp: "0:19:48"},
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/f9add3e6-322b-4604-9bc7-73e68182a658?lessonUuid=5fae38d0-3a20-4fee-b7c4-ea6e8bc9151f&courseProgram=21094", courseName: "AISS (Feb 2024) - BECOME THE GO-TO AUTHORITY⁣", timestamp: "1:07:20"}
+                    ]
+                },
+                {
+                    name: "Typeset",
+                    definition: "Typeset.com offers an AI-powered platform designed for the easy creation of various content forms, including presentations, ebooks, and blog posts. With features like AI-driven design suggestions, extensive customization options, and collaborative tools, it simplifies the content creation process, making it accessible even to those without design experience. The platform supports multiple export formats and offers a free plan, catering to a wide range of users while emphasizing efficiency, engagement, and ease of use in content production.",
+                    link: "https://app.typeset.com/",
+                    tags: ["Presentation Maker", "eBooks", "Blog Post"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/4215c354-cfb8-4e81-9072-9eace54b2286?lessonUuid=65cfe478-3ce8-49d1-97fc-c34649e3ce4b&courseProgram=21094", courseName: "AISS (Dec 2023) - SCALE WITH AI-DRIVEN SYSTEMS⁣", timestamp: "0:43:25"}
+                    ]
+                },
+                {
+                    name: "Namelix",
+                    definition: "Namelix leverages advanced AI to offer unique, brandable business name suggestions that are both short and catchy. It differentiates itself by generating names that are not only memorable but also tailored to your business's essence, learning from your preferences to improve recommendations over time. This tool is particularly valuable for startups seeking distinctive, yet affordable, domain names in a competitive digital landscape.",
+                    link: "https://namelix.com/",
+                    tags: ["Name Generator", "Logo Generator", "Domain Availability"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/4215c354-cfb8-4e81-9072-9eace54b2286?lessonUuid=65cfe478-3ce8-49d1-97fc-c34649e3ce4b&courseProgram=21094", courseName: "AISS (Dec 2023) - SCALE WITH AI-DRIVEN SYSTEMS⁣", timestamp: "1:30:24"}
+                    ]
+                },
+                {
+                    name: "ContentFries",
+                    definition: "ContentFries positions itself as a dynamic content repurposing platform that transforms long-form videos into engaging, bite-sized pieces suitable for social media platforms. It offers an array of features, including drag-and-drop content creation, smart subtitles, and the ability to remove filler words, enhancing video content for better engagement and audience growth. This tool is designed to simplify the content production process, making it easier for users to maximize their content's reach and impact without the need for extensive video editing skills.",
+                    link: "https://www.contentfries.com/",
+                    tags: ["Transcription", "Subtitles", "Video Editing", "Content Multiplier", "Repurposing"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/4215c354-cfb8-4e81-9072-9eace54b2286?lessonUuid=a6fa2a32-60e5-45b8-bb8b-7ef67e5c02e1&courseProgram=21094", courseName: "AISS (Dec 2023) - BONUS TRAINING", timestamp: "0:44:00"}
+                    ]
+                },
+                {
+                    name: "Vidyo",
+                    definition: "Vidyo.ai is a groundbreaking AI video editor that streamlines the creation of professional-quality videos with one-click features. It boasts templates for every social media site, automatic framing and scene change detection, global reach with automatic subtitles, and the ability to enhance videos with cinematic B-roll footage. This tool significantly reduces the time and effort required for content creation, making it ideal for podcasters, marketers, and video creators aiming to maximize their online presence and engagement.",
+                    link: "https://vidyo.ai/",
+                    tags: ["Caption", "Video Editing", "Content Multiplier", "Repurposing"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/4215c354-cfb8-4e81-9072-9eace54b2286?lessonUuid=a6fa2a32-60e5-45b8-bb8b-7ef67e5c02e1&courseProgram=21094", courseName: "AISS (Dec 2023) - BONUS TRAINING", timestamp: "0:47:39"}
+                    ]
+                },
+                {
+                    name: "HeyGen",
+                    definition: "HeyGen is an innovative AI video generator that empowers users to create studio-quality videos with AI-generated avatars and voices, streamlining video production for various use cases like marketing, training, and personalized messaging. It offers an extensive selection of avatars, voices, and templates, enabling effortless customization and scalability in video creation. This platform is designed to make video production accessible to everyone, eliminating the need for complex editing skills while ensuring high-quality output.",
+                    link: "https://www.heygen.com/",
+                    tags: ["AI Avatar", "Text-to-Speech", "Video Editor"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/4215c354-cfb8-4e81-9072-9eace54b2286?lessonUuid=a6fa2a32-60e5-45b8-bb8b-7ef67e5c02e1&courseProgram=21094", courseName: "AISS (Dec 2023) - BONUS TRAINING", timestamp: "0:57:13"}
+                    ]
+                },
+                {
+                    name: "Pika.style",
+                    definition: "Pika is a versatile tool for creating screenshots and image generation through an API, catering to design, marketing teams, and individual creators. It simplifies the design process with an online screenshot editor and customizable templates, enhancing productivity and creativity in visual content creation. Trusted by over 200 paid users, Pika offers a practical solution for dynamically generating images, supporting various programming languages with SDKs for seamless integration into projects.",
+                    link: "https://pika.style/",
+                    tags: ["Image Enhancer", "Create Landing Pages", "Social Media Post"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/4215c354-cfb8-4e81-9072-9eace54b2286?lessonUuid=a6fa2a32-60e5-45b8-bb8b-7ef67e5c02e1&courseProgram=21094", courseName: "AISS (Dec 2023) - BONUS TRAINING", timestamp: "1:08:55"}
+                    ]
+                },
+                {
+                    name: "This Model Does Not Exist",
+                    definition: "This Model Does Not Exist introduces Ailice, an AI-generated character who posts daily photos on Instagram, created from AI without existing in real life. Visitors can participate by upvoting their favorite images, with the most popular one being posted daily on her Instagram account. This project exemplifies the innovative use of AI in creating engaging social media content, blurring the lines between virtual and real-life personas.",
+                    link: "https://www.thismodeldoesnotexist.co/",
+                    tags: ["AI Model", "Social Media Content"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/4215c354-cfb8-4e81-9072-9eace54b2286?lessonUuid=a6fa2a32-60e5-45b8-bb8b-7ef67e5c02e1&courseProgram=21094", courseName: "AISS (Dec 2023) - BONUS TRAINING", timestamp: "1:13:51"}
+                    ]
+                },
+                {
+                    name: "Claid",
+                    definition: "Claid.ai is a powerful AI product photography suite designed to transform ordinary product images into high-quality, engaging visuals for e-commerce platforms. By offering features like background removal, image upscaling, and automatic color correction, it helps businesses enhance their online presence, increase conversion rates, and streamline the content creation process. This platform simplifies the editing process, enabling users to easily produce uniform and visually appealing images across their catalogs, significantly improving customer engagement and satisfaction.",
+                    link: "https://claid.ai/",
+                    tags: ["Image Enhancer", "Background Removal", "AI Photoshoot"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/4215c354-cfb8-4e81-9072-9eace54b2286?lessonUuid=a6fa2a32-60e5-45b8-bb8b-7ef67e5c02e1&courseProgram=21094", courseName: "AISS (Dec 2023) - BONUS TRAINING", timestamp: "1:15:25"},
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/f9add3e6-322b-4604-9bc7-73e68182a658?lessonUuid=5fae38d0-3a20-4fee-b7c4-ea6e8bc9151f&courseProgram=21094", courseName: "AISS (Feb 2024) - BECOME THE GO-TO AUTHORITY⁣", timestamp: "1:33:57"}
+                    ]
+                },
+                {
+                    name: "SummarAIze",
+                    definition: "SummarAIze leverages AI to repurpose audio and video content into various formats such as social posts, email content, summaries, and more, streamlining content creation for marketers and creators. It simplifies transforming long-form content into engaging, shareable pieces, enhancing the reach and impact of podcasts, webinars, and interviews. The platform offers a time-efficient solution for maintaining a full content calendar and increasing audience engagement across multiple channels without manual effort.",
+                    link: "https://www.summaraize.com/",
+                    tags: ["Summarization"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/4215c354-cfb8-4e81-9072-9eace54b2286?lessonUuid=a6fa2a32-60e5-45b8-bb8b-7ef67e5c02e1&courseProgram=21094", courseName: "AISS (Dec 2023) - BONUS TRAINING", timestamp: "1:21:16"}
+                    ]
+                },
+                {
+                    name: "Trickle",
+                    definition: "Trickle offers an innovative solution to manage and utilize your screenshot chaos, employing GPT-4 Vision for more than just summarization. It organizes, generates insightful digests, and allows for easy browsing and interaction with your captured content. Trickle transforms screenshots into valuable insights, integrating seamlessly with key tools in your stack for efficient capturing and syncing, making it a versatile tool for knowledge management and content creation. ",
+                    link: "https://www.trickle.so/",
+                    tags: ["Screenshot Summarization"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/4215c354-cfb8-4e81-9072-9eace54b2286?lessonUuid=a6fa2a32-60e5-45b8-bb8b-7ef67e5c02e1&courseProgram=21094", courseName: "AISS (Dec 2023) - BONUS TRAINING", timestamp: "1:40:40"}
+                    ]
+                },
+                {
+                    name: "Plagiarism Check",
+                    definition: "PlagiarismCheck.org is a comprehensive online tool designed for detecting plagiarism, supporting academic integrity, and ensuring the originality of content. It utilizes advanced algorithms to scan texts for various forms of similarity, making it suitable for educators, students, and professionals. The platform offers detailed reports, customizable databases, and integration capabilities with educational tools, enhancing the quality of education and research by promoting original thinking and writing.",
+                    link: "https://plagiarismcheck.org/",
+                    tags: ["Plagiarism Check"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/4215c354-cfb8-4e81-9072-9eace54b2286?lessonUuid=a6fa2a32-60e5-45b8-bb8b-7ef67e5c02e1&courseProgram=21094", courseName: "AISS (Dec 2023) - BONUS TRAINING", timestamp: "1:41:46"}
+                    ]
+                },
+                {
+                    name: "Crystal Knows",
+                    definition: "Crystal Knows is a personality data platform that enhances communication and interaction in professional settings by providing insights into individuals' DISC personality profiles. It enables personalized communication strategies for sales, management, and team building, utilizing AI analysis and proprietary DISC assessment results. Crystal Knows aims to improve understanding among coworkers, customers, and prospects, promoting better relationships and effectiveness in business interactions. ",
+                    link: "https://www.crystalknows.com/",
+                    tags: ["Personality Profiles", "Research", "Communication Recommendation"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/4215c354-cfb8-4e81-9072-9eace54b2286?lessonUuid=a6fa2a32-60e5-45b8-bb8b-7ef67e5c02e1&courseProgram=21094", courseName: "AISS (Dec 2023) - BONUS TRAINING", timestamp: "1:42:44"}
+                    ]
+                },
+                {
+                    name: "Castmagic",
+                    definition: "Castmagic is an AI-driven platform that accelerates content workflow, transforming audio into a myriad of content assets, from transcripts to social media posts. It's celebrated for its ability to automate tedious editing and copywriting tasks, turning a single media file into 100+ content pieces, streamlining content creation for creators and professionals. This tool is praised for its time-saving capabilities and ease of use, making it a favorite among top content creators. ",
+                    link: "https://www.castmagic.io/",
+                    tags: ["Transcription", "Summarization", "Social Media Content", "Writting"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/4215c354-cfb8-4e81-9072-9eace54b2286?lessonUuid=a6fa2a32-60e5-45b8-bb8b-7ef67e5c02e1&courseProgram=21094", courseName: "AISS (Dec 2023) - BONUS TRAINING", timestamp: "1:48:54"}
+                    ]
+                },
+                {
+                    name: "Generated Photos",
+                    definition: "Generated Photos offers a vast collection of AI-generated images, including diverse faces and full-body human models, for use in creative projects without the worry of copyright issues. The platform allows customization of images based on specific parameters, making it ideal for ads, design, marketing, research, and machine learning applications. With options for bulk downloads, API integration, and the creation of custom datasets, it provides a scalable solution for businesses seeking unique, high-quality visual content. ",
+                    link: "https://generated.photos/",
+                    tags: ["AI Model"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/4215c354-cfb8-4e81-9072-9eace54b2286?lessonUuid=a6fa2a32-60e5-45b8-bb8b-7ef67e5c02e1&courseProgram=21094", courseName: "AISS (Dec 2023) - BONUS TRAINING", timestamp: "1:50:35"}
+                    ]
+                },
+                {
+                    name: "AnswerThePublic",
+                    definition: "AnswerThePublic is a search listening tool that uncovers the questions people are asking around specific keywords, providing a goldmine of consumer insight. This tool is invaluable for generating fresh, highly relevant content, products, and services by tapping into the autocomplete data from search engines like Google. It helps in creating content that truly resonates with audiences, driving more traffic and engagement by meeting customers exactly where they are with their queries and concerns.",
+                    link: "https://answerthepublic.com/",
+                    tags: ["Research"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/4215c354-cfb8-4e81-9072-9eace54b2286?lessonUuid=a6fa2a32-60e5-45b8-bb8b-7ef67e5c02e1&courseProgram=21094", courseName: "AISS (Dec 2023) - BONUS TRAINING", timestamp: "1:52:06"},
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=a1eec597-760e-4ba9-b2d6-43cdd0f885ba&courseProgram=21094", courseName: "AISS (July 2024) - Using AI to Make Your Social Media Posts Go Viral", timestamp: "0:24:49"}
+                    ]
+                },
+                {
+                    name: "GigaBrain",
+                    definition: "GigaBrain is a search engine leveraging AI and community feedback to scan billions of comments from Reddit and other forums, offering insights and authentic answers. It integrates with Google search, enriching results with relevant community discussions and user experiences on products and places. This tool aims to provide genuine opinions, helping users make informed decisions through a blend of AI analysis and human input, while also encouraging users to critically evaluate the information and consider its scope and potential biases.",
+                    link: "https://thegigabrain.com/",
+                    tags: ["Research"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/e0c79159-bea7-474f-bb93-0dcad16042cd?lessonUuid=b0dd7c03-b97e-4838-b0f2-25b06d03a3b3&courseProgram=21094", courseName: "AISS (Nov 2023) - VIP SESSION", timestamp: "1:45:06"}
+                    ]
+                },
+                {
+                    name: "ScribeHow",
+                    definition: "Scribe is a tool designed to streamline the creation of step-by-step guides by automatically generating them as you perform tasks. It offers customization options to add details, edit screenshots, and include your branding. With one-click sharing, Scribe enhances documentation and collaboration efficiency, making it a valuable asset for operations, training, and customer support. Its ease of use and integration into workflows save significant time and effort in creating detailed process guides.",
+                    link: "https://scribehow.com/",
+                    tags: ["Screen Record", "Guide Creation"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/e0c79159-bea7-474f-bb93-0dcad16042cd?lessonUuid=b0dd7c03-b97e-4838-b0f2-25b06d03a3b3&courseProgram=21094", courseName: "AISS (Nov 2023) - VIP SESSION", timestamp: "1:49:43"}
+                    ]
+                },
+                {
+                    name: "Seamless.AI",
+                    definition: "Seamless.AI is a sales automation software designed to help users find and develop leads with ease. It provides access to millions of contacts and companies, leveraging AI to offer real-time data, including email addresses and phone numbers. This tool is designed to streamline the lead generation process, increase sales opportunities, and improve efficiency for sales teams.",
+                    link: "https://seamless.ai/",
+                    tags: ["Lead Generation", "Research", "Writting"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/e0c79159-bea7-474f-bb93-0dcad16042cd?lessonUuid=d6e3a3bb-6722-40e1-8ed1-bfbc2f72fce0&courseProgram=21094", courseName: "AISS (Nov 2023) - Special Bonus Training & Laser Coaching⁣", timestamp: "1:04:12"},
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=4b028844-0f5e-4186-a5d8-24bf4e5766d5&courseProgram=21094", courseName: "AISS (July 2024) - Using AI to Sell More: Smart Ways to Turn Leads into Customers", timestamp: "0:26:07"}
+                    ]
+                },
+                {
+                    name: "Fliki",
+                    definition: "Fliki is an AI-powered platform that simplifies the creation of videos from text, offering features like lifelike voiceovers, AI video clips, and an easy-to-use editor. It supports transforming ideas, blogs, presentations, and tweets into engaging video content quickly and cost-effectively. Fliki is designed for anyone looking to produce high-quality video content at scale, regardless of technical skills, making it a valuable tool for content creators, marketers, and educators",
+                    link: "https://fliki.ai/",
+                    tags: ["Text-to-Video", "Voice cloning", "Blog-to-Video", "AI Avatar"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/b6d81c73-9f64-45a1-b601-a2c17cf071c4?lessonUuid=492e29dc-83f0-4d3d-b54c-c9d4f731af1f&courseProgram=21094", courseName: "AISS (Jan 2024) - CREATING CAPTIVATING CONTENT THAT CONVERTS", timestamp: "1:10:09"}
+                    ]
+                },
+                {
+                    name: "Pictory",
+                    definition: "Pictory simplifies video creation for content marketers by converting text, including blog posts and scripts, into engaging videos. It features tools to auto-summarize long videos, create highlights, and automatically add captions, improving accessibility and viewer engagement. Ideal for enhancing SEO and reducing bounce rates, Pictory caters to various professionals aiming to boost their content strategy with AI-driven video production.",
+                    link: "https://pictory.ai/",
+                    tags: ["Script-to-Video", "Blog-to-Video", "Video Summarization", "Caption"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/b6d81c73-9f64-45a1-b601-a2c17cf071c4?lessonUuid=492e29dc-83f0-4d3d-b54c-c9d4f731af1f&courseProgram=21094", courseName: "AISS (Jan 2024) - CREATING CAPTIVATING CONTENT THAT CONVERTS", timestamp: "1:16:18"}
+                    ]
+                },
+                {
+                    name: "Thumbmachine",
+                    definition: "Thumbmachine is an AI-powered platform designed for creating eye-catching YouTube video thumbnails quickly and efficiently. It automates the design process with features like AI thumbnail generation, free palette generation, background removal, and image upscaling. Offering a user-friendly interface, it enables content creators to produce professional thumbnails that can enhance viewer engagement and click-through rates.",
+                    link: "https://thumbmachine.com/",
+                    tags: ["Background Removal", "Image Enchancer"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/b6d81c73-9f64-45a1-b601-a2c17cf071c4?lessonUuid=5856010f-2865-4fb9-98bc-58e5949eb241&courseProgram=21094", courseName: "AISS (Jan 2024) - Special Bonus Training & Laser Coaching⁣", timestamp: "0:36:00"}
+                    ]
+                },
+                {
+                    name: "Verk",
+                    definition: "Verk.ai offers AI employees to automate tasks across various business functions such as sales, graphic design, and personal assistance, operating on complete autopilot. It promises to enhance productivity by performing tasks 24/7, being more cost-effective than human employees, and continuously improving through AI technology. With a focus on scalability and efficiency, Verk.ai aims to reshape the future of work, providing solutions that integrate seamlessly with existing tools and platforms. ",
+                    link: "https://getverk.ai/",
+                    tags: ["Personal Assistant", "AI Employee", "Graphic Designer", "Market Research"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/b6d81c73-9f64-45a1-b601-a2c17cf071c4?lessonUuid=5856010f-2865-4fb9-98bc-58e5949eb241&courseProgram=21094", courseName: "AISS (Jan 2024) - Special Bonus Training & Laser Coaching⁣", timestamp: "0:41:04"},
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=f7d80583-204a-46c3-aeaa-90df9fce2d9d&courseProgram=3373", courseName: "How to Create an AI Army of Workers... Dedicated To You!", timestamp: "0:20:54"}
+                    ]
+                },
+                {
+                    name: "AI Phone",
+                    definition: "AI Phone simplifies crucial phone interactions using AI to provide real-time transcription, summaries, and keyword highlights, ensuring no detail is missed. It also offers a distinct US phone number for separating work and personal life, alongside an AI chat assistant for message correction, recommendations, and reply advice, enhancing communication efficiency and reducing stress.",
+                    link: "https://www.aiphone.ai/",
+                    tags: ["Transcription", "Summarization", "Remote Access & Mobile App control", "Multiple Screen", "Video Recording", "Get US Number"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/b6d81c73-9f64-45a1-b601-a2c17cf071c4?lessonUuid=5856010f-2865-4fb9-98bc-58e5949eb241&courseProgram=21094", courseName: "AISS (Jan 2024) - Special Bonus Training & Laser Coaching⁣", timestamp: "0:43:51"}
+                    ]
+                },
+                {
+                    name: "Storytailor",
+                    definition: "Storytailor is an AI-powered platform designed for children aged 3-8, enabling the creation of personalized stories that reflect each child's unique world. It supports customization across age ranges, themes, and personality traits, ensuring stories cater specifically to the child's preferences. The platform is ideal for parents, educators, and child development specialists, emphasizing inclusive, engaging storytelling with bespoke artwork and activities.",
+                    link: "https://www.storytailor.ai/",
+                    tags: ["Personlize Story Telling"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/b6d81c73-9f64-45a1-b601-a2c17cf071c4?lessonUuid=5856010f-2865-4fb9-98bc-58e5949eb241&courseProgram=21094", courseName: "AISS (Jan 2024) - Special Bonus Training & Laser Coaching⁣", timestamp: "0:46:01"}
+                    ]
+                },
+                {
+                    name: "Fluxon",
+                    definition: "Fluxon.ai specializes in creating ultra-realistic, AI-generated voiceovers, offering voice cloning with just 10 minutes of sample audio. It supports a wide range of applications including videos, audiobooks, gaming, translation/dubbing, chatbots, and podcasts, enabling content creators to produce human-sounding audio in any context. Fluxon's technology emphasizes versatility in voice generation, making it suitable for professional and engaging audio content production.",
+                    link: "https://www.fluxon.ai/",
+                    tags: ["Video Editor", "Caption", "Voice Cloning"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/b6d81c73-9f64-45a1-b601-a2c17cf071c4?lessonUuid=5856010f-2865-4fb9-98bc-58e5949eb241&courseProgram=21094", courseName: "AISS (Jan 2024) - Special Bonus Training & Laser Coaching⁣", timestamp: "0:48:02"}
+                    ]
+                },
+                {
+                    name: "Collabstr",
+                    definition: "Collabstr simplifies influencer marketing by connecting brands with top influencers across Instagram, TikTok, YouTube, and User Generated Content platforms. It streamlines the process of finding, hiring, and collaborating with influencers to create unique content, supported by a secure transaction system that holds payments until work completion. Trusted by over 40,000 brands, Collabstr offers a user-friendly platform that ensures high-quality content creation, vetted influencers, and instant communication for effective marketing campaigns. ",
+                    link: "https://collabstr.com/",
+                    tags: ["Influencer Marketplace", "Campaign Management"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/b6d81c73-9f64-45a1-b601-a2c17cf071c4?lessonUuid=5856010f-2865-4fb9-98bc-58e5949eb241&courseProgram=21094", courseName: "AISS (Jan 2024) - Special Bonus Training & Laser Coaching⁣", timestamp: "0:56:39"}
+                    ]
+                },
+                {
+                    name: "HideMy.ai",
+                    definition: "HideMy.ai offers a service to make AI-generated content undetectable by transforming it to appear humanlike. It targets overcoming AI detectors by removing AI-specific markers and watermarks, ensuring content passes as human-written. The platform provides a free tool with options for professional-level customization, supporting various content types and languages, aiming to assist users in bypassing AI content detection mechanisms effectively",
+                    link: "https://hidemy.ai/",
+                    tags: ["Removes AI markers and watermarks", "Rewrites text to sound human", "Multiple Language"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/b6d81c73-9f64-45a1-b601-a2c17cf071c4?lessonUuid=5856010f-2865-4fb9-98bc-58e5949eb241&courseProgram=21094", courseName: "AISS (Jan 2024) - Special Bonus Training & Laser Coaching⁣", timestamp: "1:34:01"}
+                    ]
+                },
+                {
+                    name: "Smith.ai",
+                    definition: "Smith.ai provides a comprehensive suite of virtual receptionist services, including phone answering, intake, scheduling, outreach campaigns, and AI-powered web chat. These solutions are tailored for a variety of industries and business sizes, offering 24/7 customer engagement through a blend of AI technology and human agents. Smith.ai aims to improve lead conversion, customer service, and overall business efficiency by handling communications and integrating with over 5,000 software applications.",
+                    link: "https://smith.ai/",
+                    tags: ["24/7 phone answering", "Outsourced sales development", "Live-staffed chat powered by AI", "Lead screening & intake", "Appointment booking", "CRM integration", "Call recording & transcriptions", "Call intelligence & analytics"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=f7d80583-204a-46c3-aeaa-90df9fce2d9d&courseProgram=3373", courseName: "How to Create an AI Army of Workers... Dedicated To You!", timestamp: "0:28:47"}
+                    ]
+                },
+                {
+                    name: "AiExperts",
+                    definition: "AiExperts.me connects clients with AI professionals and services, offering custom GPT development, AI consulting, strategy, and integration across various industries. It features a marketplace for hiring AI experts for projects related to creative media, digital marketing, legal solutions, and more, catering to businesses looking to innovate and integrate AI technologies.",
+                    link: "https://aiexperts.me/",
+                    tags: ["Hire Freelancers", "Find AI Experts", "Browse Projects"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=f7d80583-204a-46c3-aeaa-90df9fce2d9d&courseProgram=3373", courseName: "How to Create an AI Army of Workers... Dedicated To You!", timestamp: "0:33:39"}
+                    ]
+                },
+                {
+                    name: "Lindy.ai",
+                    definition: "Lindy.ai introduces AI employees that automate tasks without coding, offering services like medical scribe, customer support, HR, recruiting, sales, and operations, enhancing efficiency and cost-effectiveness. It promises real-time, accurate task completion, integrating seamlessly with existing systems, making it suitable for a wide range of business processes. ",
+                    link: "https://www.lindy.ai/",
+                    tags: ["Automate Documentation", "Customer Support", "Recruiting"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=f7d80583-204a-46c3-aeaa-90df9fce2d9d&courseProgram=3373", courseName: "How to Create an AI Army of Workers... Dedicated To You!", timestamp: "0:39:54"}
+                    ]
+                },
+                {
+                    name: "CloudSale",
+                    definition: "CloudSale.ai introduces AI Business Development Representatives (BDRs) that handle tasks such as lead generation, crafting personalized emails, and booking meetings, aiming to enhance sales processes with automation. These AI agents learn and improve over time, providing a cost-effective solution for businesses looking to optimize their sales outreach and efficiency. CloudSale.ai promises a pay-only-after-results model, ensuring value for their clients. ",
+                    link: "https://www.cloudsale.ai/",
+                    tags: ["AI Sales Agent", "Personalized Email", "Book Meeting"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=f7d80583-204a-46c3-aeaa-90df9fce2d9d&courseProgram=3373", courseName: "How to Create an AI Army of Workers... Dedicated To You!", timestamp: "0:42:27"}
+                    ]
+                },
+                {
+                    name: "YouAI",
+                    definition: "YouAI.ai offers personalized AI solutions that learn and adapt to individual user needs, aiming to improve daily tasks and activities. It emphasizes creating a more intuitive and personalized digital experience, leveraging AI to understand and predict user preferences for a variety of applications.",
+                    link: "https://youai.ai/",
+                    tags: ["No-code app builder", "Tracking usage", "Presentation"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=f7d80583-204a-46c3-aeaa-90df9fce2d9d&courseProgram=3373", courseName: "How to Create an AI Army of Workers... Dedicated To You!", timestamp: "0:47:22"}
+                    ]
+                },
+                {
+                    name: "Perplexity AI",
+                    definition: "Perplexity AI is a conversational search engine and information discovery platform launched in August 2022. It is a versatile tool that can assist various professions like researchers, writers, artists, musicians, and programmers in multiple tasks such as answering questions, generating text, writing creative content, and summarizing text. Perplexity AI is designed to provide direct answers to users' questions, and it offers features such as Copilot, which provides a guided AI search experience. The platform is not just about answering questions; it's about empowering users to do more, whether it's summarizing content, exploring new topics, or getting creative",
+                    link: "https://www.perplexity.ai/",
+                    tags: ["AI Chatbot", "In-depth Research", "Code Generation and Editing","Summarization", "Language Translation"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=f7d80583-204a-46c3-aeaa-90df9fce2d9d&courseProgram=3373", courseName: "How to Create an AI Army of Workers... Dedicated To You!", timestamp: "1:04:07"},
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/f9add3e6-322b-4604-9bc7-73e68182a658?lessonUuid=5fae38d0-3a20-4fee-b7c4-ea6e8bc9151f&courseProgram=21094", courseName: "AISS (Feb 2024) - BECOME THE GO-TO AUTHORITY⁣", timestamp: "0:27:54"},
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=e2a0ba2b-2d6e-470b-96f8-78dfae6e8474&courseProgram=21094", courseName: "AISS (Jully 2024) - Finding Your Perfect Clients: Using AI to Grow Your Business", timestamp: "0:36:36"},
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=35883c1d-0c84-490c-a953-06a1a863da97&courseProgram=21094", courseName: "AISS (July 2024) - Putting It All Together: Your AI Action Plan", timestamp: "0:31:37"}
+                    ]
+                },
+                {
+                    name: "Phot.AI",
+                    definition: "Phot.AI revolutionizes visual content creation with its AI-powered editing capabilities, automating complex tasks like background removal and image restoration for professional-grade results. This cloud-based, multifunctional platform seamlessly blends photo editing and graphic design, offering a user-friendly interface that caters to both novices and professionals, accessible from anywhere at any time.",
+                    link: "https://www.phot.ai/",
+                    tags: ["Text-to-Image", "Image Editor","Image Enhancer"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/f9add3e6-322b-4604-9bc7-73e68182a658?lessonUuid=5fae38d0-3a20-4fee-b7c4-ea6e8bc9151f&courseProgram=21094", courseName: "AISS (Feb 2024) - BECOME THE GO-TO AUTHORITY⁣", timestamp: "1:37:18"}
+                    ]
+                },
+                {
+                    name: "ThumbnailAi",
+                    definition: "ThumbnailAi stands as an innovative AI tool designed to optimize YouTube content engagement by evaluating and rating thumbnails, guiding users to select the most effective visuals that drive maximum clicks. This tool leverages advanced algorithms to enhance content visibility and viewer attraction, making it a valuable asset for creators aiming to boost their video performance.",
+                    link: "https://thumbnail-ai.ybouane.com/",
+                    tags: ["Rate Thumbnails"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=b7aa717d-772d-45a9-92df-b50618982ecc&courseProgram=3373", courseName: "Powerful Prompts for LinkedIn Posts, Video Course, Audience Persona and More!", timestamp: "0:30:22"}
+                    ]
+                },
+                {
+                    name: "Chatbase",
+                    definition: "Chatbase redefines chatbot capabilities, offering a comprehensive suite of features that enable the creation of highly customized, accurate, and trustworthy virtual assistants. With capabilities ranging from importing data, customizing behavior, embedding on websites, to integrating with existing tools, and ensuring privacy and security, Chatbase stands out by supporting over 80 languages, providing advanced analytics, and enabling lead generation. Its use of powerful AI models and the option for whitelabel customizations make it a versatile choice for businesses looking to enhance customer interaction while maintaining rigorous data integrity and operational efficiency.",
+                    link: "https://www.chatbase.co/",
+                    tags: ["Custom GPT", "Lead Generation"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=b7aa717d-772d-45a9-92df-b50618982ecc&courseProgram=3373", courseName: "Powerful Prompts for LinkedIn Posts, Video Course, Audience Persona and More!", timestamp: "1:00:36"}
+                    ]
+                },
+                {
+                    name: "Pika",
+                    definition: "Pika revolutionizes video creation with its AI-driven platform, offering three innovative pathways: text-to-video, image-to-video, and video-to-video conversions, catering to diverse creative needs. It empowers users with advanced editing features, such as lip-syncing, frame modification, and canvas expansion, enabling the crafting of dynamic and engaging videos with ease and precision.",
+                    link: "https://pika.art/",
+                    tags: ["Text-To-Video", "Image-To-Video","Video Editor"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=b7aa717d-772d-45a9-92df-b50618982ecc&courseProgram=3373", courseName: "Powerful Prompts for LinkedIn Posts, Video Course, Audience Persona and More!", timestamp: "1:07:02"},
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=4b028844-0f5e-4186-a5d8-24bf4e5766d5&courseProgram=21094", courseName: "AISS (July 2024) - Using AI to Sell More: Smart Ways to Turn Leads into Customers", timestamp: "1:16:05"}
+                    ]
+                },
+                {
+                    name: "Character.ai",
+                    definition: "https://beta.character.ai/",
+                    link: "Character.ai leverages cutting-edge AI technology to enable users to create and engage with lifelike digital characters, offering a unique interactive experience. This platform embodies the convergence of entertainment, storytelling, and technology, allowing for personalized conversations and interactions with a variety of AI-powered personas, catering to diverse interests and providing a novel way to explore digital communication and creativity.",
+                    tags: ["Character Creator", "Chat with Characters"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=b7aa717d-772d-45a9-92df-b50618982ecc&courseProgram=3373", courseName: "Powerful Prompts for LinkedIn Posts, Video Course, Audience Persona and More!", timestamp: "1:15:20"}
+                    ]
+                },
+                {
+                    name: "Suno AI",
+                    definition: "Suno AI transforms the landscape of music creation with its innovative feature that enables users to swiftly generate full two-minute songs on a wide array of topics, from friendships and culinary delights to the spectrum of human emotions. This cutting-edge tool democratizes music production, inviting users of all skill levels to explore their creativity and express themselves through song, effortlessly and instantaneously.",
+                    link: "https://www.suno.ai/",
+                    tags: ["Music Generation", "Royalty-Free Music"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=df074315-9882-4186-860d-b2373590e3df&courseProgram=3373", courseName: "Levelling up with AI (super cool AI tools & megaprompts for your business)", timestamp: "0:22:56"}
+                    ]
+                },
+                {
+                    name: "Dexa",
+                    definition: "Dexa introduces a unique platform that bridges the gap between curious minds and trusted experts across diverse domains like health, fitness, technology, and business, through the medium of podcasts. This innovative approach enables users to delve into specific topics or seek general knowledge within a particular field, fostering a dynamic environment for learning and engagement directly from industry professionals.",
+                    link: "https://dexa.ai/",
+                    tags: ["Research", "General Knowledge"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/536f97f5-82a7-403c-9e48-b302343c90fd?lessonUuid=470327c9-b3ad-4d19-ae5f-03268037dce1&courseProgram=21094", courseName: "AISS (March 2024) - BECOME THE GO-TO AUTHORITY⁣", timestamp: "1:16:24"}
+                    ]
+                },
+                {
+                    name: "Tavus",
+                    definition: "Tavus.io harnesses AI to redefine video marketing, offering unparalleled personalization by creating tailored videos for broad audiences from a single recording. Utilizing advanced voice and facial cloning technologies to ensure realism, Tavus.io boosts engagement, click-through, and response rates, directly impacting ROI positively. This platform stands as a transformative tool for businesses seeking to make their marketing efforts more personal and effective.",
+                    link: "https://www.tavus.io/",
+                    tags: ["Video Cloning", "Voice Cloning", "Text-To-Video"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=df074315-9882-4186-860d-b2373590e3df&courseProgram=3373", courseName: "Levelling up with AI (super cool AI tools & megaprompts for your business)", timestamp: "0:08:45"}
+                    ]
+                },
+                {
+                    name: "Hume AI",
+                    definition: "Hume AI pioneers in leveraging artificial intelligence to craft technologies that comprehend and interact with human emotions, with their flagship Empathic Voice Interface (EVI) leading the way. This API endows applications with not only a voice but also the nuanced capability to understand emotional cues. Alongside, Hume AI enhances its suite with additional products like the Expression Measurement API and Custom Model API, aimed at interpreting facial expressions and predicting moods, marking significant advancements in creating empathetic, human-centered technology.",
+                    link: "https://www.hume.ai/",
+                    tags: ["Voice-To-Voice", "Custom Model API"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=df074315-9882-4186-860d-b2373590e3df&courseProgram=3373", courseName: "Levelling up with AI (super cool AI tools & megaprompts for your business)", timestamp: "0:17:19"},
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=4b028844-0f5e-4186-a5d8-24bf4e5766d5&courseProgram=21094", courseName: "AISS (July 2024) - Using AI to Sell More: Smart Ways to Turn Leads into Customers", timestamp: "1:24:31"}
+                    ]
+                },
+                {
+                    name: "Wondercraft",
+                    definition: "Wondercraft revolutionizes audio content production with its AI-driven platform, enabling creators to transform text into lifelike audio using diverse AI voices or even personalized voice clones. It simplifies podcast creation from script to publication, offering features like voice selection, sound effects, content translation, and seamless distribution to major platforms, thus democratizing professional-quality podcasting for a global audience.",
+                    link: "https://www.wondercraft.ai/",
+                    tags: ["Text-to-Speech", "Podcast Creation", "Audio Editing"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=df074315-9882-4186-860d-b2373590e3df&courseProgram=3373", courseName: "Levelling up with AI (super cool AI tools & megaprompts for your business)", timestamp: "0:30:02"}
+                    ]
+                },
+                {
+                    name: "MicroLaunch",
+                    definition: "MicroLaunch offers a dynamic platform where innovators can present their ideas and products, ranging from AI assistants to SEO and productivity tools, to a community of contributors who vote and provide feedback. This interactive environment fosters a unique space for validation and refinement, enabling creators to gauge interest and refine their offerings based on real-world input, thereby bridging the gap between concept and market readiness.",
+                    link: "https://microlaunch.net/",
+                    tags: ["Vote on Ideas"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=df074315-9882-4186-860d-b2373590e3df&courseProgram=3373", courseName: "Levelling up with AI (super cool AI tools & megaprompts for your business)", timestamp: "0:39:12"}
+                    ]
+                },
+                {
+                    name: "Butternut AI",
+                    definition: "Butternut AI revolutionizes website creation, offering a user-friendly and cost-effective solution that enables anyone to build professional websites instantly without the need for expensive developers. Its accessibility and affordability make it an ideal choice for individuals and businesses aiming to establish a strong online presence swiftly and efficiently.",
+                    link: "https://butternut.ai/",
+                    tags: ["Text-To-Website", "Website Builder"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=df074315-9882-4186-860d-b2373590e3df&courseProgram=3373", courseName: "Levelling up with AI (super cool AI tools & megaprompts for your business)", timestamp: "0:41:26"}
+                    ]
+                },
+                {
+                    name: "MarketingIdeas",
+                    definition: "MarketingIdeas stands out as an exclusive newsletter, delivering a weekly curation of the most innovative and successful marketing strategies drawn from a rich well of over ten years of expertise. Tailored for businesses aiming for extraordinary growth, it promises to funnel the crème de la crème of marketing insights from leading startups directly to subscribers' inboxes, serving as a pivotal resource for those seeking to harness the most impactful marketing ideas on the planet.",
+                    link: "https://www.marketingideas.com/",
+                    tags: ["Marketing Strategies", "Marketing Insights", "Research"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=df074315-9882-4186-860d-b2373590e3df&courseProgram=3373", courseName: "Levelling up with AI (super cool AI tools & megaprompts for your business)", timestamp: "0:45:21"}
+                    ]
+                },
+                {
+                    name: "Lummi",
+                    definition: "Lummi stands out as a free stock photo website, offering an extensive collection of millions of images crafted through artificial intelligence. With a broad array of categories like nature, people, food, and backgrounds, Lummi caters to an expansive spectrum of creative needs, making high-quality, diverse imagery accessible to all. This platform is a valuable resource for anyone in search of unique, AI-generated visuals to enhance their projects or digital content.",
+                    link: "https://www.lummi.ai/",
+                    tags: ["Stock Image"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/super-connector-mastermind/prg-5b75fcaf-6420-48fb-9d24-437a3c352209/courses-v2/course/544b9fba-28e9-46ba-8d9a-08526e170974?lessonUuid=df074315-9882-4186-860d-b2373590e3df&courseProgram=3373", courseName: "Levelling up with AI (super cool AI tools & megaprompts for your business)", timestamp: "1:02:17"}
+                    ]
+                },
+                {
+                    name: "Simplified",
+                    definition: "Simplified is an all-in-one design platform that helps users create and manage content efficiently. It offers tools for graphic design, video editing, social media management, and copywriting, all integrated into a single interface. Users can access a variety of templates, assets, and AI-driven features to streamline their creative process. The platform also supports collaboration, allowing teams to work together in real-time. Simplified aims to make content creation accessible and straightforward for businesses and individuals alike.",
+                    link: "https://simplified.com/",
+                    tags: ["Presentation Maker", "Thumbnail Maker", "Ads Generator", "Text-To-Image", "Text-To-Video", "Video Repurposing", "Text-To-Speech", "Captioning", "Writing", "Social Media Manager"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/mastermind-bonuses/prg-efc454f6-8527-452c-bd19-d31ddd94aabb/courses-v2/course/28e867f3-b7c5-47a9-afc0-90730f2c4ccf?lessonUuid=40294354-1feb-4984-bc75-ce23d0d01153&courseProgram=20960", courseName: "Bonus Laser Coaching", timestamp: "0:45:08"}
+                    ]
+                },
+                {
+                    name: "Notably",
+                    definition: "Notably is a research platform designed to help teams collect, analyze, and share qualitative data. It offers tools for organizing research projects, capturing insights, and generating reports. The platform facilitates collaboration by allowing team members to work together seamlessly, ensuring that valuable research data is efficiently transformed into actionable insights. Notably aims to streamline the research process, making it easier for teams to manage and utilize qualitative data effectively.",
+                    link: "https://www.notably.ai/",
+                    tags: ["Research", "Digital Sticky Notes", "Transcription", "Cluster Analysis"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=e2a0ba2b-2d6e-470b-96f8-78dfae6e8474&courseProgram=21094", courseName: "AISS (July 2024) - Finding Your Perfect Clients: Using AI to Grow Your Business", timestamp: "0:24:32"}
+                    ]
+                },
+                {
+                    name: "AnswerSocrates",
+                    definition: "Helps students understand difficult texts by answering questions and summarizing key points.",
+                    link: "https://answersocrates.com/",
+                    tags: ["Google Trends Analysis", "Question Discovery", "Research Assistance", "SEO Support", "Idea Brainstorming"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=e2a0ba2b-2d6e-470b-96f8-78dfae6e8474&courseProgram=21094", courseName: "AISS (July 2024) - Finding Your Perfect Clients: Using AI to Grow Your Business", timestamp: "0:38:58"}
+                    ]
+                },
+                {
+                    name: "ChatGPT Persona Creator",
+                    definition: "Lets users create custom AI characters with specific personalities for various tasks.",
+                    link: "https://chatgpt.com/g/g-e7GpdobKd-persona-creator",
+                    tags: ["Detailed User Personas", "Buyer Persona Crafting", "Marketing Alignment", "Sales Alignment", "Product Development Support", "Operational Team Support"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=e2a0ba2b-2d6e-470b-96f8-78dfae6e8474&courseProgram=21094", courseName: "AISS (July 2024) - Finding Your Perfect Clients: Using AI to Grow Your Business", timestamp: "0:40:42"}
+                    ]
+                },
+                {
+                    name: "Rytr.me",
+                    definition: "An AI tool that helps you write content like blog posts, emails, and social media posts.",
+                    link: "https://rytr.me/",
+                    tags: ["Text Editing and Improvement", "Blog Outline and Content Generation", "Social Media Ad Generation", "Email Generation", "AI Interview Question Generator"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=e2a0ba2b-2d6e-470b-96f8-78dfae6e8474&courseProgram=21094", courseName: "AISS (July 2024) - Finding Your Perfect Clients: Using AI to Grow Your Business", timestamp: "1:10:51"}
+                    ]
+                },
+                {
+                    name: "SubjectLine.com",
+                    definition: "Suggests catchy email subject lines to increase the chances of people opening your emails.",
+                    link: "https://subjectline.com/",
+                    tags: ["Subject Line Rating Tool", "Filtering and Deliverability Evaluation", "Marketing Performance Analysis", "Email Marketing Strategies"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=e2a0ba2b-2d6e-470b-96f8-78dfae6e8474&courseProgram=21094", courseName: "AISS (July 2024) - Finding Your Perfect Clients: Using AI to Grow Your Business", timestamp: "1:14:28"}
+                    ]
+                },
+                {
+                    name: "ValueProp.dev",
+                    definition: "Helps businesses create clear and attractive value statements to explain why their product is worth buying.",
+                    link: "https://valueprop.dev/",
+                    tags: ["AI Value Proposition", "Customer Segment Identification", "Pain Point Analysis", "Gain Creator Suggestions"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=e2a0ba2b-2d6e-470b-96f8-78dfae6e8474&courseProgram=21094", courseName: "AISS (July 2024) - Finding Your Perfect Clients: Using AI to Grow Your Business", timestamp: "1:18:24"}
+                    ]
+                },
+                {
+                    name: "Writesonic",
+                    definition: "An AI tool that generates different types of content, including blog posts and social media updates, and checks for grammar mistakes.",
+                    link: "https://writesonic.com/",
+                    tags: ["AI Article Writer", "Real-time SEO Checker & Optimizer", "Custom AI Chatbots","AI Image and Voice Generation"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=e2a0ba2b-2d6e-470b-96f8-78dfae6e8474&courseProgram=21094", courseName: "AISS (July 2024) - Finding Your Perfect Clients: Using AI to Grow Your Business", timestamp: "1:20:52"}
+                    ]
+                },
+                {
+                    name: "Brand24",
+                    definition: "Monitors online mentions of a brand and analyzes what people are saying about it to help businesses manage their reputation.",
+                    link: "https://brand24.com/",
+                    tags: ["Social Media Monitoring", "Hashtag Tracking", "Comprehensive Reporting"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=e2a0ba2b-2d6e-470b-96f8-78dfae6e8474&courseProgram=21094", courseName: "AISS (July 2024) - Finding Your Perfect Clients: Using AI to Grow Your Business", timestamp: "1:23:16"}
+                    ]
+                },
+                {
+                    name: "Anyword",
+                    definition: "Helps marketers write effective ads, social media posts, and emails by predicting which versions will perform best.",
+                    link: "https://anyword.com/",
+                    tags: ["AI Article Writer", "Performance Prediction", "Personalized Content Generation"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=e2a0ba2b-2d6e-470b-96f8-78dfae6e8474&courseProgram=21094", courseName: "AISS (July 2024) - Finding Your Perfect Clients: Using AI to Grow Your Business", timestamp: "1:25:00"}
+                    ]
+                },
+                {
+                    name: "Lusha",
+                    definition: "Provides accurate contact details for professionals, making it easier for sales and marketing teams to connect with potential leads.",
+                    link: "https://www.lusha.com/",
+                    tags: ["B2B Contact Data", "Sales Prospecting","CRM Data Enrichment"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=e2a0ba2b-2d6e-470b-96f8-78dfae6e8474&courseProgram=21094", courseName: "AISS (July 2024) - Finding Your Perfect Clients: Using AI to Grow Your Business", timestamp: "1:34:17"}
+                    ]
+                },
+                {
+                    name: "Hunter.io",
+                    definition: "https://hunter.io/",
+                    link: "Helps businesses find and verify email addresses for outreach and lead generation.",
+                    tags: ["Email Finder", "Domain Search", "Cold Email Campaigns"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=e2a0ba2b-2d6e-470b-96f8-78dfae6e8474&courseProgram=21094", courseName: "AISS (July 2024) - Finding Your Perfect Clients: Using AI to Grow Your Business", timestamp: "1:36:55"}
+                    ]
+                },
+                {
+                    name: "Writecream",
+                    definition: "An AI-powered writing assistant that helps users quickly create high-quality content like blog posts, emails, and social media updates by providing suggestions and automating the writing process.",
+                    link: "https://app.writecream.com/",
+                    tags: ["AI Article Writer", "Email Personalization", "Social Media Content Generator", "Audio and Voice Generation", "Cold Outreach Messages"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=a1eec597-760e-4ba9-b2d6-43cdd0f885ba&courseProgram=21094", courseName: "AISS (July 2024) - Using AI to Make Your Social Media Posts Go Viral", timestamp: "0:31:19"}
+                    ]
+                },
+                {
+                    name: "Marketing Ideas",
+                    definition: "A newsletter that provides weekly marketing tactics from successful startups, offering valuable insights and inspiration for marketers.",
+                    link: "https://www.marketingideas.com/",
+                    tags: ["Tactics from Successful Startups", "Marketing Strategy Tips"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=a1eec597-760e-4ba9-b2d6-43cdd0f885ba&courseProgram=21094", courseName: "AISS (July 2024) - Using AI to Make Your Social Media Posts Go Viral", timestamp: "038:59"}
+                    ]
+                },
+                {
+                    name: "Viral Intro Hooks (Custom GPT)",
+                    definition: "An AI tool that helps you rewrite hooks for TikTok, YouTube Shorts, or Reels videos, using insights from over 5,000 top hooks",
+                    link: "https://chatgpt.com/g/g-9BGRz0SfJ-viral-intro-hooks",
+                    tags: ["Attention-Grabbing Opening Lines", "Storytelling Techniques", "Emotional Engagement", "High-Impact Visuals", "CTA Optimization"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=a1eec597-760e-4ba9-b2d6-43cdd0f885ba&courseProgram=21094", courseName: "AISS (July 2024) - Using AI to Make Your Social Media Posts Go Viral", timestamp: "0:54:59"}
+                    ]
+                },
+                {
+                    name: "DALL-E 2",
+                    definition: "An AI tool that creates images from text descriptions, useful for making unique visuals for your posts.",
+                    link: "https://openai.com/dall-e-2",
+                    tags: ["Text-to-Image Generation", "Image Editing", "High-Resolution Outputs"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=a1eec597-760e-4ba9-b2d6-43cdd0f885ba&courseProgram=21094", courseName: "AISS (July 2024) - Using AI to Make Your Social Media Posts Go Viral", timestamp: "0:59:00"}
+                    ]
+                },
+                {
+                    name: "Photo_CreateE",
+                    definition: "Poe's Photo CreateE is an AI-driven tool that generates stunning, customized images from text prompts, making it easy to create visually appealing content.",
+                    link: "https://poe.com/Photo_CreateE",
+                    tags: ["Image Generation", "Customizable Visuals", "High-Resolution Outputs"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=a1eec597-760e-4ba9-b2d6-43cdd0f885ba&courseProgram=21094", courseName: "AISS (July 2024) - Using AI to Make Your Social Media Posts Go Viral", timestamp: "1:03:28"}
+                    ]
+                },
+                {
+                    name: "Invideo AI",
+                    definition: "Invideo AI revolutionizes video production by enabling users to craft videos through pre-designed templates or innovative text prompts, streamlining script generation, scene creation, and voiceover addition. Offering a comprehensive video editing suite, Invideo AI places full creative control in the users' hands, enhanced by features like stock media access, realistic voiceovers, and collaborative tools, catering to professionals seeking efficiency without compromising on quality or creativity.",
+                    link: "https://invideo.io/ai",
+                    tags: ["Video Creation", "Text-to-Video", "Video Editing"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=a1eec597-760e-4ba9-b2d6-43cdd0f885ba&courseProgram=21094", courseName: "AISS (July 2024) - Using AI to Make Your Social Media Posts Go Viral", timestamp: "1:06:08"}
+                    ]
+                },
+                {
+                    name: "Content Creator Clock",
+                    definition: "ChatGPT's Content Creator Clock is an AI-powered tool designed to help content creators optimize their workflow, schedule tasks, and manage time efficiently to maximize productivity.",
+                    link: "https://chatgpt.com/g/g-QSI9sPjC5-content-creator-clock",
+                    tags: ["Time Management Tools", "Content Scheduling", "Productivity Analytics"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=a1eec597-760e-4ba9-b2d6-43cdd0f885ba&courseProgram=21094", courseName: "AISS (July 2024) - Using AI to Make Your Social Media Posts Go Viral", timestamp: "1:10:01"}
+                    ]
+                },
+                {
+                    name: "Easy-Peasy.ai",
+                    definition: "An AI-powered platform that simplifies content creation by generating high-quality text, images, and marketing copy effortlessly, helping businesses and individuals boost productivity.",
+                    link: "https://easy-peasy.ai/",
+                    tags: ["Content Generation", "Image Creation", "Audio Transcription", "Text-to-Speech", "Custom AI Chatbots"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=a1eec597-760e-4ba9-b2d6-43cdd0f885ba&courseProgram=21094", courseName: "AISS (July 2024) - Using AI to Make Your Social Media Posts Go Viral", timestamp: "1:12:42"}
+                    ]
+                },
+                {
+                    name: "1 Million Leads Analyst",
+                    definition: "ChatGPT's 1 Million Leads Analyst is an AI-powered tool designed to analyze and optimize lead generation strategies, helping businesses scale their outreach and convert more leads effectively.",
+                    link: "https://chatgpt.com/g/g-hzkqdKrnQ-1-million-leads-analyst",
+                    tags: ["Lead Analysis and Scoring", "Conversion Rate Optimization", "CRM Integration"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=4b028844-0f5e-4186-a5d8-24bf4e5766d5&courseProgram=21094", courseName: "AISS (July 2024) - Using AI to Sell More: Smart Ways to Turn Leads into Customers", timestamp: "0:17:52"}
+                    ]
+                },
+                {
+                    name: "Leadzen.ai",
+                    definition: "A lead generation service that uses AI to find potential customers based on your ideal profile. It provides detailed information, real-time email verification, company data enrichment, and lead scoring",
+                    link: "https://www.leadzen.ai/",
+                    tags: ["Lead Generation", "Targeted B2B Contact Lists", "CRM Integration"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=4b028844-0f5e-4186-a5d8-24bf4e5766d5&courseProgram=21094", courseName: "AISS (July 2024) - Using AI to Sell More: Smart Ways to Turn Leads into Customers", timestamp: "0:31:52"}
+                    ]
+                },
+                {
+                    name: "MarbleFlows",
+                    definition: "Helps businesses create effective lead capture forms and landing pages with built-in features to qualify leads.",
+                    link: "https://marbleflows.com/",
+                    tags: ["AI-Powered Onboarding", "User Engagement Analytics", "Customizable Learning Paths", "In-App Guides and Tutorials", "Performance Tracking"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=4b028844-0f5e-4186-a5d8-24bf4e5766d5&courseProgram=21094", courseName: "AISS (July 2024) - Using AI to Sell More: Smart Ways to Turn Leads into Customers", timestamp: "0:36:50"}
+                    ]
+                },
+                {
+                    name: "Sentiment Analysis GPTs",
+                    definition: "Uses advanced AI to analyze customer sentiment from text, such as reviews and social media posts, helping businesses understand customer emotions and make informed decisions.",
+                    link: "https://chatgpt.com/g/g-2IzF3EArx-sentiment-analysis-gpt",
+                    tags: ["Real-Time Sentiment Analysis", "Emotion Detection", "API Integration for Automated Workflows"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=4b028844-0f5e-4186-a5d8-24bf4e5766d5&courseProgram=21094", courseName: "AISS (July 2024) - Using AI to Sell More: Smart Ways to Turn Leads into Customers", timestamp: "1:08:58"}
+                    ]
+                },
+                {
+                    name: "SiteSpeak.ai",
+                    definition: "Converts your website content into natural-sounding audio, making your site more accessible and engaging for visitors",
+                    link: "https://sitespeak.ai/",
+                    tags: ["AI-Powered Chatbots for Websites", "24/7 Customer Support Automation"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=debbb315-29a9-41ff-a73a-b428a1bb00a2&courseProgram=21094", courseName: "AISS (July 2024) - Scaling Your Impact: AI-Powered Systems for Sustainable Growth", timestamp: "0:29:25"}
+                    ]
+                },
+                {
+                    name: "Deflekt AI",
+                    definition: "An AI-powered customer support tool that handles routine inquiries, freeing up human agents for complex issues. It integrates with email, chat, and Slack, and includes features like automated ticket routing and sentiment analysis.",
+                    link: "https://deflekt.ai/",
+                    tags: ["Real-Time Website Protection", "Continuous Monitoring and Alerts"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=debbb315-29a9-41ff-a73a-b428a1bb00a2&courseProgram=21094", courseName: "AISS (July 2024) - Scaling Your Impact: AI-Powered Systems for Sustainable Growth", timestamp: "0:34:17"}
+                    ]
+                },
+                {
+                    name: "MARA AI Review Management",
+                    definition: "Automates responses to customer reviews across various platforms, helping businesses improve their ratings and customer satisfaction.",
+                    link: "https://www.mara-solutions.com/",
+                    tags: ["AI-Powered Online Reputation Management", "Real-Time Alerts for Brand Mentions", "Customizable Reporting and Analytics"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=debbb315-29a9-41ff-a73a-b428a1bb00a2&courseProgram=21094", courseName: "AISS (July 2024) - Scaling Your Impact: AI-Powered Systems for Sustainable Growth", timestamp: "0:49:56"}
+                    ]
+                },
+                {
+                    name: "Question Base",
+                    definition: "Uses AI to create and manage knowledge bases, enabling interactive Q&A interfaces and improved knowledge sharing",
+                    link: "https://www.questionbase.com/",
+                    tags: ["Question Generation", "Customizable Quiz Creation", "Integration with Learning Management Systems (LMS)"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=debbb315-29a9-41ff-a73a-b428a1bb00a2&courseProgram=21094", courseName: "AISS (July 2024) - Scaling Your Impact: AI-Powered Systems for Sustainable Growth", timestamp: "1:06:53"}
+                    ]
+                },
+                {
+                    name: "Dashworks AI",
+                    definition: "Connects various data sources, builds interactive dashboards, and provides insights through natural language processing and machine learning",
+                    link: "https://www.dashworks.ai/",
+                    tags: ["Unified Search Across Platforms", "Summarization","Team Collaboration Tools","Data-Driven Insights and Analytics"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=debbb315-29a9-41ff-a73a-b428a1bb00a2&courseProgram=21094", courseName: "AISS (July 2024) - Scaling Your Impact: AI-Powered Systems for Sustainable Growth", timestamp: "1:11:01"}
+                    ]
+                },
+                {
+                    name: "Customer Service Pro (Custom GPT)",
+                    definition: "The tool is designed to streamline customer service operations by providing templates for various scenarios such as handling complaints, responding to information requests, processing refund and compensation requests, and acknowledging service improvement suggestions. It ensures consistent, empathetic, and informative communication, helping customer service representatives respond efficiently and professionally",
+                    link: "https://chatgpt.com/g/g-TFPWy0X4s-customer-service-pro",
+                    tags: ["Customer Support Automation", "Real-Time Issue Resolution","Performance Analytics and Reporting"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=debbb315-29a9-41ff-a73a-b428a1bb00a2&courseProgram=21094", courseName: "AISS (July 2024) - Scaling Your Impact: AI-Powered Systems for Sustainable Growth", timestamp: "1:15:22"}
+                    ]
+                },
+                {
+                    name: "Repurpose.io",
+                    definition: "Repurpose.io is a versatile platform designed to streamline content distribution by enabling creators to automatically publish and repurpose their media across multiple social platforms, including TikTok, Instagram, YouTube, Facebook, Zoom, Google Drive, Dropbox, and audio podcasts. This tool simplifies the workflow for creators by managing content placement from a single point, maximizing exposure and engagement across diverse digital landscapes.",
+                    link: "https://repurpose.io/",
+                    tags: ["Content Repurposing", "Multi-Platform Distribution", "Video and Audio Transcoding"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=debbb315-29a9-41ff-a73a-b428a1bb00a2&courseProgram=21094", courseName: "AISS (July 2024) - Scaling Your Impact: AI-Powered Systems for Sustainable Growth", timestamp: "1:22:33"}
+                    ]
+                },
+                {
+                    name: "ByAutomata",
+                    definition: "Automates repetitive tasks by creating custom workflows that integrate with various apps and services, boosting productivity and efficiency",
+                    link: "https://byautomata.io/",
+                    tags: ["Multi-Channel Distribution", "Data-Driven Content Strategy", "Automated SEO Optimization"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=debbb315-29a9-41ff-a73a-b428a1bb00a2&courseProgram=21094", courseName: "AISS (July 2024) - Scaling Your Impact: AI-Powered Systems for Sustainable Growth", timestamp: "1:36:15"}
+                    ]
+                },
+                {
+                    name: "ChecklistGenerator.ai",
+                    definition: "This AI-powered tool simplifies the creation of checklists for various tasks and projects. By inputting a topic or goal, users can generate comprehensive checklists that ensure no step is overlooked",
+                    link: "https://checklistgenerator.ai/",
+                    tags: ["Checklist Creation", "Task Prioritization", "Collaboration Tools"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=debbb315-29a9-41ff-a73a-b428a1bb00a2&courseProgram=21094", courseName: "AISS (July 2024) - Scaling Your Impact: AI-Powered Systems for Sustainable Growth", timestamp: "0:56:37"}
+                    ]
+                },
+                {
+                    name: "SkillAI",
+                    definition: "This platform offers AI-driven skills assessments to help individuals and organizations identify skill gaps and create personalized learning paths. It helps users develop their skills and stay competitive in a rapidly changing job market.",
+                    link: "https://skillai.io/",
+                    tags: ["Skill Assessment", "Personalized Learning Pathways", "Integration with Learning Management Systems (LMS)"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=debbb315-29a9-41ff-a73a-b428a1bb00a2&courseProgram=21094", courseName: "AISS (July 2024) - Scaling Your Impact: AI-Powered Systems for Sustainable Growth", timestamp: "1:08:23"}
+                    ]
+                },
+                {
+                    name: "Summit Pathfinder",
+                    definition: "This AI-powered tool assists in career planning and exploration. It helps users identify potential career paths, develop career strategies, and connect with relevant resources and mentors.",
+                    link: "https://www.summit.im/tools/pathfinder",
+                    tags: ["Strategic Roadmapping", "Goal Setting and Tracking", "Visual Progress Mapping"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=debbb315-29a9-41ff-a73a-b428a1bb00a2&courseProgram=21094", courseName: "AISS (July 2024) - Scaling Your Impact: AI-Powered Systems for Sustainable Growth", timestamp: "1:12:00"}
+                    ]
+                },
+                {
+                    name: "FocusDoro",
+                    definition: "This productivity app combines the Pomodoro technique with AI to help users focus and manage their time effectively. It offers customizable timers, task management features, and AI-powered insights to optimize work sessions",
+                    link: "https://focusdoro.com/",
+                    tags: ["Pomodoro Timer", "Task Management", "Productivity Analytics"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=debbb315-29a9-41ff-a73a-b428a1bb00a2&courseProgram=21094", courseName: "AISS (July 2024) - Scaling Your Impact: AI-Powered Systems for Sustainable Growth", timestamp: "1:16:31"}
+                    ]
+                },
+                {
+                    name: "Spellmint",
+                    definition: "Spellmint is a platform designed to help you enhance your writing by detecting and correcting grammar, spelling, and punctuation errors. It also offers style suggestions to improve clarity and readability.",
+                    link: "https://spellmint.com/",
+                    tags: ["Spelling and Grammar Checker", "Sentence Rewriting","Vocabulary Enhancement"],
+                    videos: [
+                        { url: "https://super-connector.upcoach.com/p/events-trainings-challenge/prg-1d002303-db3f-4fb6-8714-03502643b1d9/courses-v2/course/343111af-b4a6-43b8-bd2d-6345169a1af9?lessonUuid=debbb315-29a9-41ff-a73a-b428a1bb00a2&courseProgram=21094", courseName: "AISS (July 2024) - Scaling Your Impact: AI-Powered Systems for Sustainable Growth", timestamp: "1:46:54"}
+                    ]
+                },
+            ];
+
+            function displayTools(tools) {
+                const list = document.getElementById('aiToolsList');
+                list.innerHTML = '';
+
+                tools.forEach(tool => {
+                    const toolElement = document.createElement('div');
+                    toolElement.className = 'tool';
+
+                    toolElement.innerHTML = `
+                        <h3>${tool.name}</h3>
+                        <p>${tool.definition}</p>
+                        <a href="${tool.link}" target="_blank" class="website-link">Website</a>
+                        <div class="tags">${tool.tags.map(tag => `<span>${tag}</span>`).join('')}</div>
+                        <div class="videos">${tool.videos.map(video => `<a href="${video.url}" target="_blank">${video.courseName} (at ${video.timestamp})</a>`).join(', ')}</div>
+                    `;
+
+                    list.appendChild(toolElement);
+                });
+            }
+
+            function filterTools(query) {
+                const filteredTools = aiTools.filter(tool => 
+                    tool.name.toLowerCase().includes(query.toLowerCase()) ||
+                    tool.tags.some(tag => tag.toLowerCase().includes(query.toLowerCase()))
+                );
+                displayTools(filteredTools);
+            }
+
+            document.getElementById('searchBox').addEventListener('input', (e) => {
+                filterTools(e.target.value);
+            });
+
+            displayTools(aiTools);
+        });
+    </script>
+</body>
+</html>
